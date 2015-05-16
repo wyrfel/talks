@@ -1,0 +1,26 @@
+{
+  "name": "talks",
+  "version": "0.0.0",
+  "description": "reveal.js slides",
+  "main": "Gruntfile.js",
+  "dependencies": {
+    "grunt-grunt": "~0.2.3",
+    "grunt": "~0.4.5"
+  },
+  "devDependencies": {
+    "grunt-grunt": "^0.2.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:wyrfel/talks.git"
+  },
+  "author": "Andre Wyrwa <a.wyrwa@gmx.de>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wyrfel/talks/issues"
+  },
+  "homepage": "https://github.com/wyrfel/talks"
+}
