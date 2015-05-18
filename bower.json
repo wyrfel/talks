@@ -15,6 +15,8 @@
     "tests"
   ],
   "dependencies": {
-    "reveal-js": "hakimel/reveal.js#3.0.0"
+    "reveal-js": "hakimel/reveal.js#3.0.0",
+    "plottable": "~0.54.0",
+    "mermaid": "~0.4.0"
   }
 }
