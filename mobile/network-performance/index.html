@@ -14,8 +14,8 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-		<link rel="stylesheet" href="../../css/reveal/reveal.css">
-		<link rel="stylesheet" href="../../css/reveal/theme/black.css" id="theme">
+		<link rel="stylesheet" href="../../bower_components/reveal-js/css/reveal.css">
+		<link rel="stylesheet" href="../../bower_components/reveal-js/css/theme/black.css" id="theme">
         <link rel="stylesheet" href="../../css/extras.css">
 
 		<!-- Code syntax highlighting -->
@@ -34,7 +34,7 @@
 			var link = document.createElement( 'link' );
 			link.rel = 'stylesheet';
 			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? '../../css/reveal/print/pdf.css' : '../../css/reveal/print/paper.css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../../bower_components/reveal-js/css/reveal/print/pdf.css' : '../../bower_components/reveal-js/css/reveal/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
 
@@ -578,7 +578,7 @@ echo "\r\n";
 		</div>
 
 		<script src="../../bower_components/reveal-js/lib/js/head.min.js"></script>
-		<script src="../../js/reveal/reveal.js"></script>
+		<script src="../../bower_components/reveal-js/js/reveal.js"></script>
         <script src="../../bower_components/d3/d3.min.js"></script>
         <script src="../../bower_components/plottable/plottable.min.js"></script>
         <script src="../../bower_components/mermaid/dist/mermaid.full.min.js"></script>
