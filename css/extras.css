@@ -50,3 +50,20 @@
     transform: translateY(0);
     opacity: 1;
 }
+
+.reveal .slides section .fragment.slow {
+    transition-duration: 3s;
+}
+
+.reveal .slides section .fragment.center {
+    opacity: 1;
+    visibility: visible;
+}
+.reveal .slides section .fragment.center.visible {
+    margin: auto;
+    display: block;
+    padding: 0;
+    opacity: 1;
+    visibility: visible;
+    text-align: center;
+}

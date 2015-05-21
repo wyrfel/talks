@@ -1,0 +1,156 @@
+.reveal .congestion {
+    border-top: 2px solid #fff;
+    margin: auto;
+    width: 80%;
+    text-align: left;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    position: relative;
+}
+
+.reveal .congestion .congestion-client {
+    position: absolute;
+    left: 0;
+    float: left;
+    background: #ccc;
+    font-size: 16px;
+    margin-top: -50px;
+    z-index: 10;
+    margin-left: -20px;
+    width: 100px;
+    height: 16px;
+    padding: 42px 0;
+    vertical-align: middle;
+    text-align: center;
+    border-radius: 10px;
+    color: #000;
+}
+
+.reveal .congestion .congestion-switch {
+    position: absolute;
+    background: #fa3;
+    left: 50%;
+    font-size: 16px;
+    line-height: 1em;
+    margin-top: -50px;
+    margin-left: -50px;
+    z-index: 10;
+    margin-right: -20px;
+    width: 100px;
+    height: 16px;
+    vertical-align: middle;
+    text-align: center;
+    padding: 42px 0;
+    border-radius: 10px;
+    color: #000;
+}
+
+.reveal .congestion .congestion-server {
+    position: absolute;
+    right: 0;
+    float: right;
+    background: #ccc;
+    font-size: 16px;
+    line-height: 1em;
+    margin-top: -50px;
+    z-index: 10;
+    margin-right: -20px;
+    width: 100px;
+    height: 16px;
+    vertical-align: middle;
+    text-align: center;
+    padding: 42px 0;
+    border-radius: 10px;
+    color: #000;
+}
+
+.reveal .congestion-data {
+    display: block;
+    -webkit-animation: congestion 3s infinite linear;
+    animation: congestion 3s infinite linear;
+}
+
+.reveal .congestion-data-ttr {
+    display: block;
+    -webkit-animation: ttr 4s infinite linear;
+    animation: ttr 4s infinite linear;
+}
+
+.reveal .congestion-data1 {
+    margin-top: -21px;
+    -webkit-animation-delay: 0.5s;
+    animation-delay: 0.5s;
+}
+
+.reveal .congestion-data2 {
+    margin-top: -21px;
+    -webkit-animation-delay: 1s;
+    animation-delay: 1s;
+}
+
+.reveal .congestion-data3 {
+    margin-top: -21px;
+    -webkit-animation-delay: 1.5s;
+    animation-delay: 1.5s;
+}
+
+.reveal .congestion-data4 {
+    margin-top: -21px;
+    -webkit-animation-delay: 2s;
+    animation-delay: 2s;
+}
+
+.reveal .congestion-data5 {
+    margin-top: -21px;
+    -webkit-animation-delay: 2.5s;
+    animation-delay: 2.5s;
+}
+
+.reveal .congestion-data6 {
+    margin-top: -21px;
+    -webkit-animation-delay: 3s;
+    animation-delay: 3s;
+}
+
+.reveal .congestion-data:after {
+    content: '';
+    margin-top: -11px;
+    margin-left: -10px;
+    width: 21px;
+    height: 21px;
+    background: #fff;
+    border-radius: 10px;
+    color: #fff;
+    display: block;
+}
+
+@-webkit-keyframes congestion {
+    0% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+    20% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+    40% {
+        -webkit-transform: translateX(50%);
+        transform: translateX(50%);
+        opacity: 1;
+    }
+    60% {
+        -webkit-transform: translateX(50%);
+        transform: translateX(50%);
+        opacity: 1;
+    }
+    80% {
+        -webkit-transform: translateX(50%) translateY(100px);
+        transform: translateX(50%) translateY(100px);
+        opacity: 10;
+    }
+    100% {
+        -webkit-transform: translateX(50%) translateY(200px);
+        transform: translateX(50%) translateY(200px);
+        opacity: 0;
+    }
+}

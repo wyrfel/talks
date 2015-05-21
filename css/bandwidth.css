@@ -1,0 +1,47 @@
+
+.reveal .bandwidth {
+    position: relative;
+    background: url('/images/backgrounds/matrix.gif') no-repeat center center;
+    height: 192px;
+    overflow: hidden;
+    border: 3px solid black;
+}
+
+.reveal .bandwidth:before,
+.reveal .bandwidth:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 5%;
+    height: 100%;
+    background: black;
+    -webkit-animation: bandwidth 10s infinite linear;
+    animation: bandwidth 10s infinite linear;
+}
+
+.reveal .bandwidth:before {
+    left: 0;
+}
+
+.reveal .bandwidth:after {
+    right: 0;
+}
+
+@-webkit-keyframes bandwidth {
+    10% {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+    }
+    40% {
+        -webkit-transform: scaleX(3);
+        transform: scaleX(15);
+    }
+    60% {
+        -webkit-transform: scaleX(3);
+        transform: scaleX(15);
+    }
+    80% {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+    }
+}

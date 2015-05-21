@@ -1,0 +1,194 @@
+.reveal .slowstart {
+    border-top: 2px solid #fff;
+    margin: auto;
+    width: 80%;
+    text-align: left;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    position: relative;
+}
+
+.reveal .slowstart .slowstart-client {
+    position: absolute;
+    left: 0;
+    float: left;
+    background: #ccc;
+    font-size: 16px;
+    margin-top: -50px;
+    z-index: 10;
+    margin-left: -20px;
+    width: 100px;
+    height: 16px;
+    padding: 42px 0;
+    vertical-align: middle;
+    text-align: center;
+    border-radius: 10px;
+    color: #000;
+}
+
+.reveal .slowstart .slowstart-switch {
+    position: absolute;
+    background: #fa3;
+    left: 50%;
+    font-size: 16px;
+    line-height: 1em;
+    margin-top: -50px;
+    margin-left: -50px;
+    z-index: 10;
+    margin-right: -20px;
+    width: 100px;
+    height: 16px;
+    vertical-align: middle;
+    text-align: center;
+    padding: 42px 0;
+    border-radius: 10px;
+    color: #000;
+}
+
+.reveal .slowstart .slowstart-server {
+    position: absolute;
+    right: 0;
+    float: right;
+    background: #ccc;
+    font-size: 16px;
+    line-height: 1em;
+    margin-top: -50px;
+    z-index: 10;
+    margin-right: -20px;
+    width: 100px;
+    height: 16px;
+    vertical-align: middle;
+    text-align: center;
+    padding: 42px 0;
+    border-radius: 10px;
+    color: #000;
+}
+
+.reveal .slowstart-data {
+    display: block;
+    -webkit-animation: slowstart 10s infinite linear;
+    animation: slowstart 10s infinite linear;
+}
+
+.reveal .slowstart-data:after {
+    content: '';
+    margin-top: -6px;
+    margin-left: -5px;
+    width: 11px;
+    height: 11px;
+    background: #fff;
+    border-radius: 10px;
+    color: #fff;
+    display: block;
+}
+
+.reveal div.slowstart-data-drop {
+    display: block;
+    -webkit-animation: slowstartdrop 10s infinite linear 6s;
+    animation: slowstartdrop 10s infinite linear 6s;
+}
+
+.reveal .slowstart-data0 {
+    margin-top: -6px;
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+}
+
+.reveal .slowstart-data0:after {
+    width: 11px;
+    height: 11px;
+    margin-top: -6px;
+    margin-left: -5px;
+    border-radius: 5px;
+}
+
+.reveal .slowstart-data1 {
+    margin-top: -16px;
+    -webkit-animation-delay: 2s;
+    animation-delay: 2s;
+}
+
+.reveal .slowstart-data1:after {
+    width: 21px;
+    height: 21px;
+    margin-top: -11px;
+    margin-left: -11px;
+    border-radius: 10px;
+}
+
+.reveal .slowstart-data2 {
+    margin-top: -26px;
+    -webkit-animation-delay: 4s;
+    animation-delay: 4s;
+}
+
+.reveal .slowstart-data2:after {
+    width: 31px;
+    height: 31px;
+    margin-top: -16px;
+    margin-left: -15px;
+    border-radius: 15px;
+}
+
+.reveal .slowstart-data3 {
+    margin-top: -36px;
+    -webkit-animation-delay: 6s;
+    animation-delay: 6s;
+}
+
+.reveal .slowstart-data3:after {
+    width: 41px;
+    height: 41px;
+    margin-top: -21px;
+    margin-left: -20px;
+    border-radius: 20px;
+}
+
+@-webkit-keyframes slowstart {
+    0% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1;
+    }
+    20% {
+        -webkit-transform: translateX(90%);
+        transform: translateX(100%);
+    }
+    100% {
+        -webkit-transform: translateX(90%);
+        transform: translateX(100%);
+    }
+}
+
+@-webkit-keyframes slowstartdrop {
+    0% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1;
+    }
+    10% {
+        -webkit-transform: translateX(50%);
+        transform: translateX(50%);
+        opacity: 1;
+    }
+    20% {
+        -webkit-transform: translateX(50%);
+        transform: translateX(50%);
+        opacity: 1;
+    }
+    30% {
+        -webkit-transform: translateX(50%) translateY(100px);
+        transform: translateX(50%) translateY(100px);
+        opacity: 0;
+    }
+    40% {
+        -webkit-transform: translateX(50%) translateY(200px);
+        transform: translateX(50%) translateY(200px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateX(50%) translateY(200px);
+        transform: translateX(50%) translateY(200px);
+        opacity: 0;
+    }
+}
