@@ -1,0 +1,42 @@
+.reveal .tcp {
+    margin: 50px 0 50px 0;
+    font-size: 0.5em;
+    font-family: monospace;
+}
+
+.reveal .tcp .mtu {
+    display: inline-block;
+    width: 9%;
+    height: 1.6em;
+    padding: 1em 0;
+    border-top: 1px solid white;
+    margin: 0 1% 0 0;
+    font-family: monospace;
+}
+
+.reveal .tcp .mtu-label {
+    font-size: 0.825em;
+    margin-top: -2.4em;
+    margin-bottom: 0.6em;
+}
+
+.reveal .tcp .segment {
+    background: #5279c7;
+    border: 1px solid #749be9;
+    color: #85acfa;
+    padding: 5px 0;
+    text-align: center;
+    border-left-width: 10px;
+}
+
+.reveal .tcp .sequence {
+    color: #aaa;
+    font-family: monospace;
+    margin-right: 1%;
+    border-bottom: 1px solid #aaa;
+    background: linear-gradient(#000, #000, #000, #888);
+}
+
+.reveal .tcp .sequence-label {
+    color: #aaa;
+}

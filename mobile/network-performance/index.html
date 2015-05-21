@@ -1,0 +1,777 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js - The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="/css/reveal/reveal.css">
+		<link rel="stylesheet" href="/css/reveal/theme/black.css" id="theme">
+        <link rel="stylesheet" href="/css/extras.css">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="/bower_components/reveal-js/lib/css/zenburn.css">
+        <link rel="stylesheet" href="/css/plottable.css">
+        <link rel="stylesheet" href="/css/mermaid.css">
+        <link rel="stylesheet" href="/css/spinner/stripes.css">
+        <link rel="stylesheet" href="/css/ttr.css">
+        <link rel="stylesheet" href="/css/bandwidth.css">
+        <link rel="stylesheet" href="/css/congestion.css">
+        <link rel="stylesheet" href="/css/slowstart.css">
+        <link rel="stylesheet" href="/css/tcp.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '/css/reveal/print/pdf.css' : '/css/reveal/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="/bower_components/reveal-js/lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+                <section style="text-align: left;">
+                    <h2>TCP, HTTP <small style="vertical-align: baseline;">&</small></h2>
+                    <h2>mobile Performance</h2>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>
+                        <div><small>Andre Wyrwa</small></div>
+                        <div><small>Senior Software Engineer</small></div>
+                        <div><small>THE ICONIC</small></div>
+                    </p>
+                </section>
+                <section>
+                    <section>
+                        <div class="fragment bounce-in" data-fragment-index="1" data-start-timer="atimer" data-autoslide="4000" style="position: relative; width:40%; float: left;">
+                            <img src="/images/nexus.png" class="noframe" style="width: 100%"/>
+                            <div class="fragment" data-fragment-index="2" data-autoslide="50" style="overflow:hidden; position:absolute; width: 77.2%; height: 78.5%; top: 7.8%; left: 11.4%; background: #313131;">
+                                <div style="overflow: hidden; height: 10%; position: relative;">
+                                    <img src="/images/sydphp.png" class="fragment noframe" data-fragment-index="4" data-autoslide="1000" style="display: block; margin-top: -16%; height: 300%; max-height: 1000%; max-width: 1000%;" />
+                                </div>
+                                <div style="text-align: left; background: white; height: 90%; z-index: 10; color: #333; font-size: 16px;">
+                                    <div  class="fragment" data-fragment-index="5" data-autoslide="300" style="height: 20%; background: #eee;">
+                                        <img src="/images/sydphp-photo.jpeg" class="noframe" style="display: block; width: 100%";/>
+                                    </div>
+                                    <div style="padding: 15px;">
+                                        <p class="fragment" data-fragment-index="6" data-autoslide="100" style="margin-top: 0;">Our next event is on the <strong>21st of May</strong>.</p>
+                                        <p class="fragment" data-fragment-index="7" data-autoslide="100"><strong>Speakers:</strong></p>
+                                        <div class="fragment" data-fragment-index="8" data-autoslide="100" >
+                                            <div style="float: left; width: 40px; height: 40px; background-color: #ccc; margin: 3px 10px 5px 0;">
+                                                <img data-autoslide="1000" src="/images/avatar.jpg" class="noframe" style="display: block; width: 40px";/>
+                                            </div>
+                                            <strong>Andre Wyrwa</strong>
+                                            <div>TCP, HTTP & mobile Performance</div>
+                                            <p>A short trip into the lower layers of networking and their implications for initial page load performance over mobile carriers. You will hear about RTT, congestion windows, chunked transfer encoding, how HTTP2 will help and how to utilise that knowledge when developing PHP applications served to mobile devices.</p>
+                                        </div>
+                                        <div class="fragment" data-fragment-index="9" data-stop-timer="true">
+                                            <div style="float: left; width: 40px; height: 40px; background-color: #ccc; margin: 3px 10px 5px 0;">
+
+                                            </div>
+                                            <strong>Static sites & blog automation</strong>
+                                            <div>Jack Skinner</div>
+                                            <p>With all the bells and whistles of a CMS, we forget about simple, static HTML.  In this talk reintroduce you to the concept of a static site, how to build one (using PHP of course) and deployment techniques to manage it.  Examples include using sculpin, markdown, twig, CI and CDN's.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>A common case</h2>
+                        <div id="atimer" style="display: none; color: #888; margin-top: 15%; font-family:'Menlo', Courier, monospace; font-size: 128px;"></div>
+                        <p class="fragment" data-fragment-index="3" data-autoslide="390">first content after ~4s</p>
+                    </section>
+                    <section>
+                        <blockquote class="fragment">
+                            <p>75% of users have stated that they'd never come back to a page they had to wait for for more than 4s</p>
+                            <small>Google</small>
+                        </blockquote>
+                        <blockquote class="fragment">
+                            <p>loss of flow of thoughts occurs after 1s</p>
+                            <small>Jakob Nielson Group</small>
+                        </blockquote>
+                    </section>
+                    <section>
+                        <div class="fragment bounce-in" data-fragment-index="1" data-start-timer="btimer" data-autoslide="1000" style="position: relative; width:40%; float: left;">
+                            <img src="/images/nexus.png" class="noframe" style="width: 100%"/>
+                            <div class="fragment" data-fragment-index="3" data-autoslide="50" style="overflow:hidden; position:absolute; width: 77.2%; height: 78.5%; top: 7.8%; left: 11.4%; background: #313131;">
+                                <div style="overflow: hidden; height: 10%; position: relative;">
+                                    <img src="/images/sydphp.png" class="noframe" style="display: block; margin-top: -16%; height: 300%; max-height: 1000%; max-width: 1000%;" />
+                                </div>
+                                <div style="text-align: left; background: white; height: 90%; z-index: 10; color: #333; font-size: 16px;">
+                                    <div style="height: 20%; background: #eee;">
+                                        <img class="fragment noframe" data-fragment-index="9" src="/images/sydphp-photo.jpeg" data-stop-timer="true" style="display: block; width: 100%";/>
+                                    </div>
+                                    <div style="padding: 15px;">
+                                        <p class="fragment" data-fragment-index="4" data-autoslide="100" style="margin-top: 0;">Our next event is on the <strong>21st of May</strong>.</p>
+                                        <p class="fragment" data-fragment-index="5" data-autoslide="100"><strong>Speakers:</strong></p>
+                                        <div class="fragment" data-fragment-index="6" data-autoslide="100" >
+                                            <div style="float: left; width: 40px; height: 40px; background-color: #ccc; margin: 3px 10px 5px 0;">
+                                                <img class="fragment noframe" data-fragment-index="8" data-autoslide="1000" src="/images/avatar.jpg" style="display: block; width: 40px";/>
+                                            </div>
+                                            <strong>Andre Wyrwa</strong>
+                                            <div>TCP, HTTP & mobile Performance</div>
+                                            <p>A short trip into the lower layers of networking and their implications for initial page load performance over mobile carriers. You will hear about RTT, congestion windows, chunked transfer encoding, how HTTP2 will help and how to utilise that knowledge when developing PHP applications served to mobile devices.</p>
+                                        </div>
+                                        <div class="fragment" data-fragment-index="7" data-autoslide="1000">
+                                            <div style="float: left; width: 40px; height: 40px; background-color: #ccc; margin: 3px 10px 5px 0;">
+
+                                            </div>
+                                            <strong>Static sites & blog automation</strong>
+                                            <div>Jack Skinner</div>
+                                            <p>With all the bells and whistles of a CMS, we forget about simple, static HTML.  In this talk reintroduce you to the concept of a static site, how to build one (using PHP of course) and deployment techniques to manage it.  Examples include using sculpin, markdown, twig, CI and CDN's.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>So what if?</h2>
+                        <div id="btimer" style="display: none; color: #888; margin-top: 15%; font-family:'Menlo', Courier, monospace; font-size: 128px;"></div>
+                        <p class="fragment" data-fragment-index="3" data-autoslide="50">first content after ~1s</p>
+                    </section>
+                    <section>
+                        <div class="fragment bounce-in" data-fragment-index="1" data-start-timer="ctimer" data-autoslide="1000" style="position: relative; width:40%; float: left;">
+                            <img src="/images/nexus.png" class="noframe" style="width: 100%"/>
+                            <div class="fragment" data-fragment-index="3" data-autoslide="750" style="position:absolute; width: 77.2%; height: 78.5%; top: 7.8%; left: 11.4%; background: #313131;">
+                                <img src="/images/sydphp.png" class="noframe" style="margin-top: 40%; height: 50%;"/>
+                                <div class="fragment" data-fragment-index="4" data-autoslide="750" style="margin-top: -30%; font-size: 0.825em; color: #888;">
+                                    <div style="font-size: 0.825em;">next event</div>
+                                    <div style=" color:#28AADF;">21st May</div>
+                                </div>
+                                <div class="fragment" data-fragment-index="5" data-autoslide="50" style="margin-top: 10%; font-size: 0.825em; color: #888;">
+                                    <div class="loader" style="display: inline-block; font-size:8px; opacity: 0.35;">...loading content...</div>
+                                </div>
+                            </div>
+                            <div class="fragment" data-fragment-index="7" data-autoslide="50" style="overflow:hidden; position:absolute; width: 77.2%; height: 78.5%; top: 7.8%; left: 11.4%; background: #313131;">
+                                <div style="overflow: hidden; height: 10%; position: relative;">
+                                    <img src="/images/sydphp.png" class="noframe" style="display: block; margin-top: -16%; height: 300%; max-height: 1000%; max-width: 1000%;" />
+                                </div>
+                                <div style="text-align: left; background: white; height: 90%; z-index: 10; color: #333; font-size: 16px;">
+                                    <div style="height: 20%; background: #eee;">
+                                        <img class="fragment noframe" data-fragment-index="9" src="/images/sydphp-photo.jpeg" data-stop-timer="true" style="display: block; width: 100%";/>
+                                    </div>
+                                    <div style="padding: 15px;">
+                                        <p style="margin-top: 0;">Our next event is on the <strong>21st of May</strong>.</p>
+                                        <p><strong>Speakers:</strong></p>
+                                        <div>
+                                            <div style="float: left; width: 40px; height: 40px; background-color: #ccc; margin: 3px 10px 5px 0;">
+                                                <img class="fragment noframe" data-fragment-index="8" data-autoslide="50" src="/images/avatar.jpg" style="display: block; width: 40px";/>
+                                            </div>
+                                            <strong>Andre Wyrwa</strong>
+                                            <div>TCP, HTTP & mobile Performance</div>
+                                            <p>A short trip into the lower layers of networking and their implications for initial page load performance over mobile carriers. You will hear about RTT, congestion windows, chunked transfer encoding, how HTTP2 will help and how to utilise that knowledge when developing PHP applications served to mobile devices.</p>
+                                        </div>
+                                        <div>
+                                            <div style="float: left; width: 40px; height: 40px; background-color: #ccc; margin: 3px 10px 5px 0;">
+
+                                            </div>
+                                            <strong>Static sites & blog automation</strong>
+                                            <div>Jack Skinner</div>
+                                            <p>With all the bells and whistles of a CMS, we forget about simple, static HTML.  In this talk reintroduce you to the concept of a static site, how to build one (using PHP of course) and deployment techniques to manage it.  Examples include using sculpin, markdown, twig, CI and CDN's.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>Or maybe?</h2>
+                        <div id="ctimer" style="display: none; color: #888; margin-top: 15%; font-family:'Menlo', Courier, monospace; font-size: 128px;"></div>
+                        <p class="fragment" data-fragment-index="3" data-autoslide="50">first content after ~1s</p>
+                        <p class="fragment" data-fragment-index="6" data-autoslide="1500">keeping the user entertained</p>
+                    </section>
+                </section>
+                <section data-transition="none">
+                    <h2>The Page Speed Problem</h2>
+                    <div style="text-align: left;">
+                        <div class="fragment bounce-in" data-fragment-index="4" style="position: relative; padding: 0 0 0 150px;">
+                            <div style="position: absolute; left: 0; width: 100px; height: 100%; background: #8BA5D4; z-index: -1;"></div>
+                            <div>Rendering</div>
+                            <small class="fragment fade-out" data-fragment-index="5">DOM & CSS complexity, JavaScript</small>
+                        </div>
+                        <div class="fragment bounce-in" data-fragment-index="3" style="position: relative; padding: 0 0 0 150px;">
+                            <div style="position: absolute; left: 0; width: 100px; height: 100%; background: #F2E4AE; z-index: -1;"></div>
+                            <div>DOM Parsing</div>
+                            <small class="fragment fade-out" data-fragment-index="5">assets, inline images</small>
+                        </div>
+                        <div class="fragment bounce-in" data-fragment-index="2" style="position: relative; padding: 0 0 0 150px;">
+                            <div style="position: absolute; left: 0; width: 100px; height: 100%; background: #8B6F64; z-index: -1;"></div>
+                            <div>Page Load</div>
+                            <small class="fragment fade-out" data-fragment-index="5">slow & intermittent connections</small>
+                        </div>
+                        <div class="fragment bounce-in" data-fragment-index="1" style="position: relative; padding: 0 0 0 150px;">
+                            <div style="position: absolute; left: 0; width: 100px; height: 100%; background: #8F6399; z-index: -1;"></div>
+                            <div>Server-side processing</div>
+                            <small class="fragment fade-out" data-fragment-index="5">database access, linear processing, slow PHP code ;-)</small>
+                        </div>
+                    </div>
+                </section>
+                <section data-transition="none">
+                    <h2 class="fragment fade-out slow" data-fragment-index="3" data-autoslide="1000">The Page Speed Problem</h2>
+                    <div style="text-align: left;">
+                        <div class="fragment fade-out slow" data-fragment-index="3" style="position: relative; padding: 0 0 0 150px;">
+                            <div style="position: absolute; left: 0; width: 100px; height: 100%; background: #8BA5D4; z-index: -1;"></div>
+                            <div>Rendering</div>
+                            <small>optimise HTML, JS and CSS, optimise rendering, selective execution paths</small>
+                        </div>
+                        <div class="fragment fade-out slow" data-fragment-index="3" style="position: relative; padding: 0 0 0 150px;">
+                            <div style="position: absolute; left: 0; width: 100px; height: 100%; background: #F2E4AE; z-index: -1;"></div>
+                            <div>DOM Parsing</div>
+                            <small class="fragment" data-fragment-index="2">compact assets, optimise images, lazy loading, asset injection, browser-caching</small>
+                        </div>
+                        <div style="position: relative; padding: 0 0 0 150px;">
+                            <div class="fragment fade-out slow" data-fragment-index="3" style="position: absolute; left: 0; width: 100px; height: 100%; background: #8B6F64; z-index: -1;"></div>
+                            <div class="fragment grow slow" data-fragment-index="4">Page Load <span class="fragment slow" data-fragment-index="4"> - What can we do about that?</span></div>
+                            <div class="fragment fade-out slow" data-fragment-index="3">
+                                <small>&nbsp;</small>
+                            </div>
+                        </div>
+                        <div class="fragment fade-out slow" data-fragment-index="3" style="position: relative; padding: 0 0 0 150px;">
+                            <div style="position: absolute; left: 0; width: 100px; height: 100%; background: #8F6399; z-index: -1;"></div>
+                            <div>Server-side processing</div>
+                            <small class="fragment" data-fragment-index="1">horizontal scaling, caching, platform choices, optimise PHP code</small>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <section>
+                        <p>network time = amount of data / bandwidth</p>
+                        <div class="fragment center" data-chart="bandwidth">
+                            <svg id="bandwidth-chart" width="600" height="400" style="margin: auto;"></svg>
+                        </div>
+                    </section>
+                    <section>
+                        <p>relatively complex page ~ 30 KB</p>
+                        <p class="fragment">@ 5 Mbit/s = ~ 600 KB/s : ~ 0.05 seconds</p>
+                        <p class="fragment">@ 384 kbit/s = ~ 47 KB/s : ~ 0.65 seconds</p>
+                        <p class="fragment">doesn't explain 4+ seconds</p>
+                    </section>
+                    <section>
+                        <h2>Bandwidth</h2>
+                        <p>maximum amount of data that can travel through the network in 1 second</p>
+                        <div class="bandwidth"></div>
+                    </section>
+                    <section>
+                        <h2>Round-Trip Time</h2>
+                        <p>the time it takes for <strong>a single bit</strong> of data to travel from client to server and back</p>
+                        <div class="ttr" style="text-align: left; width: 80%;">
+                            <div class="ttr-client">Client</div>
+                            <div class="ttr-server">Server</div>
+                            <div class="ttr-data"></div>
+                        </div>
+                        <p class="fragment">NOT included in bandwidth metric</p>
+                    </section>
+                    <section>
+                        <h2>Round-Trip Time</h2>
+                        <div class="fragment center" data-chart="rtt">
+                            <svg id="rtt-chart" width="600" height="400" style="margin: auto;"></svg>
+                        </div>
+                        <p class="fragment">mobile average: 200ms</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <p>What does that mean for our mobile page?</p>
+                    </section>
+                    <section>
+                        <h2>Initial Page Request</h2>
+                        <div class="mermaid">
+                            sequenceDiagram
+                            participant DNS
+                            participant Browser
+                            participant Server
+                            Browser->>DNS: DNS Request
+                            Note left of Browser: 200ms
+                            DNS-->>Browser: DNS Response
+                            Browser->>Server: TCP Handshake
+                            Note right of Browser: 200ms
+                            Server-->>Browser: TCP Handshake
+                            Browser->>Server: HTTP Request
+                            Note right of Browser: 200ms
+                            Server-->>Browser: HTTP Response
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Redirects</h2>
+                        <div class="mermaid">
+                            sequenceDiagram
+                            participant DNS
+                            participant Browser
+                            participant Server
+                            opt different domain
+                                Browser->>DNS: DNS Request
+                                Note left of Browser: 200ms
+                                DNS-->>Browser: DNS Response
+                                Browser->>Server: TCP Handshake
+                                Note right of Browser: 200ms
+                                Server-->>Browser: TCP Handshake
+                            end
+                            Browser->>Server: HTTP Request
+                            Note right of Browser: 200ms
+                            Server-->>Browser: HTTP Response
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Budget</h2>
+                        <div style="text-align: left; width: 40%; margin: auto;">
+                            <div class="fragment" data-fragment-index="4" style="position: relative; padding: 0 0 0 150px;">
+                                <div style="position: absolute; left: 0; width: 100px; height: 100%; background: #8BA5D4; z-index: -1;"></div>
+                                <div>200-300 ms</div>
+                            </div>
+                            <div class="fragment" data-fragment-index="2" style="position: relative; padding: 0 0 0 150px;">
+                                <div style="position: absolute; left: 0; width: 100px; height: 100%; background: #F2E4AE; z-index: -1;"></div>
+                                <div>0 ms</div>
+                            </div>
+                            <div class="fragment" data-fragment-index="1" style="position: relative; padding: 0 0 0 150px;">
+                                <div style="position: absolute; left: 0; width: 100px; height: 100%; background: #8B6F64; z-index: -1;"></div>
+                                <div>600 ms</div>
+                            </div>
+                            <div class="fragment" data-fragment-index="3" style="position: relative; padding: 0 0 0 150px;">
+                                <div style="position: absolute; left: 0; width: 100px; height: 100%; background: #8F6399; z-index: -1;"></div>
+                                <div>100-200 ms</div>
+                            </div>
+                            <hr/>
+                            <div style=" padding: 0 0 0 150px;">1s</div>
+                        </div>
+                    </section>
+                </section>
+                <section data-background-image="/images/mobile.jpg">
+                    <section>
+                        <p>But that's not all</p>
+                    </section>
+                    <section>
+                        <h2 class="fragment fade-out slow" data-fragment-index="1">Internet Protocol Suite (TCP/IP)</h2>
+                        <ul>
+                            <li class="fragment fade-out slow" data-fragment-index="1">
+                                Application Layer (HTTP)
+                            </li>
+                            <li>Transport Layer (TCP)</li>
+                            <li class="fragment fade-out slow" data-fragment-index="1">
+                                Internet Layer (IP)
+                            </li>
+                            <li class="fragment fade-out slow" data-fragment-index="1">
+                                <div>Data Link Layer (PPP)</div>
+                                <div><small>incl. physical layer: Bandwidth, Round-Trip Time</small></div>
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>TCP Flow Control</h2>
+                        <div class="mermaid">
+                            sequenceDiagram
+                            participant Sender
+                            participant Receiver
+                            Sender->>Receiver: sequence 1
+                            note right of Receiver: 200ms
+                            Receiver-->>Sender: ack, expect 2
+                            Sender->>Receiver: sequence 2
+                            note left of Sender: missing ack
+                            Sender->>Receiver: sequence 2
+                            note right of Receiver: 200ms
+                            Receiver-->>Sender: ack, expect 3
+                        </div>
+                        <p>200ms per Roundtrip</p>
+                    </section>
+                    <section>
+                        <h2>TCP Congestion Control</h2>
+                        <p class="fragment" data-fragment-index="1">Congestion</p>
+                        <p class="fragment" data-fragment-index="1">more data enters the network than it can handle</p>
+                        <div class="congestion" style="text-align: left; width: 80%;">
+                            <div class="congestion-client">Clients</div>
+                            <div class="congestion-switch">Switch</div>
+                            <div class="congestion-server">Server</div>
+                            <div class="congestion-data congestion-data-ttr"></div>
+                            <div class="fragment congestion-data congestion-data1" data-fragment-index="1"></div>
+                            <div class="fragment congestion-data congestion-data2" data-fragment-index="1"></div>
+                            <div class="fragment congestion-data congestion-data3" data-fragment-index="1"></div>
+                            <div class="fragment congestion-data congestion-data4" data-fragment-index="1"></div>
+                            <div class="fragment congestion-data congestion-data5" data-fragment-index="1"></div>
+                            <div class="fragment congestion-data congestion-data5" data-fragment-index="1"></div>
+                            <div class="fragment congestion-data congestion-data6" data-fragment-index="1"></div>
+                        </div>
+                        <div class="fragment" data-fragment-index="2">
+                            <p>Congestive Collapse</p>
+                            <p>occurs, when due to resubmissions of unacknowledged packets the network can never recover</p>
+                        </div>
+                        <p><a href="http://tools.ietf.org/html/rfc2001">RFC 2001</a></p>
+                    </section>
+                    <section>
+                        <h2>TCP Slow Start</h2>
+                        <div class="slowstart" style="text-align: left; width: 80%;">
+                            <div class="slowstart-client">Clients</div>
+                            <div class="slowstart-switch">Switch</div>
+                            <div class="slowstart-server">Server</div>
+                            <div class="slowstart-data slowstart-data0"></div>
+                            <div class="slowstart-data slowstart-data1"></div>
+                            <div class="slowstart-data slowstart-data2"></div>
+                            <div class="slowstart-data slowstart-data3 slowstart-data-drop"></div>
+                        </div>
+                        <ul>
+                            <li class="fragment">start by sending 10 segments (congestion window)</li>
+                            <li class="fragment">doubled on successful ACK</li>
+                            <li class="fragment">halved on missing ACK</li>
+                            <li class="fragment">linear increase (+1/RT) above slow start threshold</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>TCP segments</h2>
+                        <h4>(aka packets)</h4>
+                        <div class="tcp">
+                            <div class="sequence">
+                                <div class="mtu">
+                                    <div class="mtu-label">1500b</div>
+                                    <div class="segment">1460b</div>
+                                </div><div class="mtu">
+                                    <div class="mtu-label">1500b</div>
+                                    <div class="segment">1460b</div>
+                                </div><div class="mtu">
+                                    <div class="mtu-label">1500b</div>
+                                    <div class="segment">1460b</div>
+                                </div><div class="mtu">
+                                    <div class="mtu-label">1500b</div>
+                                    <div class="segment">1460b</div>
+                                </div><div class="mtu">
+                                    <div class="mtu-label">1500b</div>
+                                    <div class="segment">1460b</div>
+                                </div><div class="mtu">
+                                    <div class="mtu-label">1500b</div>
+                                    <div class="segment">1460b</div>
+                                </div><div class="mtu">
+                                    <div class="mtu-label">1500b</div>
+                                    <div class="segment">1460b</div>
+                                </div><div class="mtu">
+                                    <div class="mtu-label">1500b</div>
+                                    <div class="segment">1460b</div>
+                                </div><div class="mtu">
+                                    <div class="mtu-label">1500b</div>
+                                    <div class="segment">1460b</div>
+                                </div><div class="mtu">
+                                    <div class="mtu-label">1500b</div>
+                                    <div class="segment">1460b</div>
+                                </div>
+                            </div>
+                            <div class="sequence-label">sequence</div>
+                        </div>
+                        <div>
+                            <ul>
+                                <li class="fragment">536 bytes <= MSS (maximum segment size) <= 64KB</li>
+                                <li class="fragment">
+                                    <div>typically 1500b (MTU) - 20b - 20b = 1460b</div>
+                                    <div><small>IPv4 header = 20 bytes, TCP header = 20 bytes</small></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section>
+                        <p>10 * 1460 b = 14600 b</p>
+                        <div class="fragment">
+                            <p>
+                                <div style="font-size: 1.5em;">~ <strong>14 KB</strong> budget</div>
+                                <small style="font-size: 0.75em;">to stay within <strong>600ms</strong></small>
+                            </p>
+                        </div>
+                        <div class="fragment">
+                            <p>
+                            <div style="font-size: 1.5em;">~ <strong>44 KB</strong> budget</div>
+                            <small style="font-size: 0.75em;">to stay within <strong>800ms</strong></small>
+                            </p>
+                        </div>
+                        <p class="fragment">
+                            How do we do that?
+                        </p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>HTTP/1.1 - Chunked Encoding</h2>
+                        <ul>
+                            <li class="fragment">remove Content-Length header</li>
+                            <li class="fragment">add Transfer-Encoding: chunked</li>
+                            <li class="fragment">
+                                <div>disable gzip compression</div>
+                                <small>(gzip compression is one layer above HTTP)</small>
+                            </li>
+                            <li class="fragment">use php flush()</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Finally some PHP code</h2>
+                        <pre><code class="php">
+// emit a chunk
+$content = ob_get_clean();     // get the content so far
+$length = strlen($content);    // calculate length
+echo dechex($length) . "\r\n"  // emit length in hex + CRLF
+echo $content . "\r\n";        // emit content + CRLF
+flush();                       // flush to browser
+ob_start();                    // start a new buffer
+                        </code></pre>
+                        <pre><code data-trim class="php">
+// terminate the page with a 0-length chunk
+echo '0' . "\r\n";
+echo "\r\n";
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>inline what you need</h2>
+                        <h4>defer all other assets</h4>
+                        <pre><code style="font-size: 0.6em; line-height: 1.2em;" data-trim class="html">
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta /&gt;
+        &lt;!— … —&gt;
+        &lt;style&gt;
+            /*
+            all styles we need for the initial page
+            BASE64 encoded images
+            */
+        &lt;/style&gt;
+        &lt;script type=“text/javascript”&gt;
+            /*
+            include initial js
+            */
+        &lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        /* initial content */
+        &lt;?php
+        // send first chunk
+        ?&gt;
+        /* keep processing */
+    &lt;/body&gt;
+ &lt;/html&gt;
+// send terminating chunk
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>HTTP/2</h2>
+                        <ul>
+                            <li class="fragment">single connection</li>
+                            <li class="fragment">framed transfer</li>
+                            <li class="fragment">server-side push</li>
+                            <li class="fragment">header compression</li>
+                        </ul>
+                    </section>
+                </section>
+				<section>
+					<h2>Thank you</h2>
+				</section>
+			</div>
+
+		</div>
+
+		<script src="/bower_components/reveal-js/lib/js/head.min.js"></script>
+		<script src="/js/reveal/reveal.js"></script>
+        <script src="/bower_components/d3/d3.min.js"></script>
+        <script src="/bower_components/plottable/plottable.min.js"></script>
+        <script src="/bower_components/mermaid/dist/mermaid.full.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: false,
+				progress: true,
+				history: true,
+				center: true,
+                notes: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: '/bower_components/reveal-js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '/bower_components/reveal-js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '/bower_components/reveal-js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '/bower_components/reveal-js/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '/bower_components/reveal-js/plugin/zoom-js/zoom.js', async: true },
+					{ src: '/bower_components/reveal-js/plugin/notes/notes.js', async: true }
+				],
+
+                parallaxBackgroundImage: '/images/backgrounds/wallpaper-stripes-vertical-dark-blue.jpg', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
+
+                // Parallax background size
+                parallaxBackgroundSize: '3000px 2000px' // CSS syntax, e.g. "2100px 900px"
+			});
+
+            mermaid.sequenceConfig = {
+                diagramMarginX:50,
+                diagramMarginY:10,
+                boxTextMargin:5,
+                noteMargin:10,
+                messageMargin:35,
+                mirrorActors:true
+            };
+
+		</script>
+        <script>
+            (function () {
+                var running = false;
+
+                Reveal.addEventListener('fragmentshown', function(event) {
+                    var fragment = event.fragment,
+                            f, t, timer;
+                    if (fragment.hasAttribute('data-start-timer')) {
+                        timer = document.getElementById(fragment.getAttribute('data-start-timer'));
+                        t = 0;
+                        f = function() {
+                            t += 37;
+                            ft = Math.floor(t / 1000);
+                            dt = (('' + ( + (t/1000) - ft)).replace(/^0\./, '') + '000').substr(0,3);
+                            timer.textContent = ('000' + ft).substr(('' + ft).length + 1) + '.' + dt;
+                            if (running) {
+                                setTimeout(f, 37);
+                            }
+                        };
+
+                        timer.style.display = 'block';
+                        running = true;
+                        setTimeout(f, 100);
+                    } else if (fragment.hasAttribute('data-stop-timer')) {
+                        running = false;
+                    };
+                });
+            }());
+        </script>
+
+        <script>
+            (function() {
+                var charts = [];
+
+                function buildRttChart() {
+                    var xScale = new Plottable.Scale.Category();
+                    var yScale = new Plottable.Scale.Linear();
+
+                    var xAxis = new Plottable.Axis.Category(xScale, "bottom");
+                    var yAxis = new Plottable.Axis.Numeric(yScale, "left");
+
+                    var min = new Plottable.Plot.Bar(xScale, yScale, true)
+                            .addDataset([
+                                {x: '2G', y: 300},
+                                {x: '3G', y: 200},
+                                {x: '4G', y: 50},
+                                {x: 'Wire', y: 10}
+                            ])
+                            .project('x', 'x', xScale)
+                            .project('y', 'y', yScale)
+                            .project('fill', function(d){return '#5279c7'})
+                            .animate(true);
+
+                    var max = new Plottable.Plot.Bar(xScale, yScale, true)
+                            .addDataset([
+                                {x: '2G', y: 1000},
+                                {x: '3G', y: 300},
+                                {x: '4G', y: 100},
+                                {x: 'Wire', y: 20}
+                            ])
+                            .project('x', 'x', xScale)
+                            .project('y', 'y', yScale)
+                            .project('fill', function(d){return '#638ad8'})
+                            .animate(true);
+
+                    var lines = new Plottable.Component.Gridlines(null, yScale);
+
+                    var label = new Plottable.Component.Label('RTT by Network type');
+
+                    var chart = new Plottable.Component.Table([
+                        [yAxis, lines.below(max.below(min))],
+                        [null,  xAxis],
+                        [null, label]
+                    ]);
+
+                    charts['rtt'] = chart;
+                }
+
+                function buildBandwidthChart() {
+                    var xScale = new Plottable.Scale.Category();
+                    var yScale = new Plottable.Scale.Linear();
+                    var color = new Plottable.Scale.Color();
+                    var cScale = new Plottable.Scale.Linear();
+
+                    var xAxis = new Plottable.Axis.Category(xScale, 'bottom');
+                    var yAxis = new Plottable.Axis.Numeric(yScale, 'left');
+                    var cAxis = new Plottable.Axis.Numeric(cScale, "right");
+
+                    var plot = new Plottable.Plot.Bar(xScale, yScale, true)
+                            .addDataset([
+                                {x: '2G', y: 0.05},
+                                {x: 'EDGE', y: 0.3},
+                                {x: '3G', y: 12},
+                                {x: '4G', y: 20},
+                            ])
+                            .project('x', 'x', xScale)
+                            .project('y', 'y', yScale)
+                            .project('fill', function(d){return 'theoretical'}, color)
+                            .animate(true);
+
+                    var actual = new Plottable.Plot.Bar(xScale, yScale, true)
+                            .addDataset([
+                                {x: '3G', y: 5},
+                                {x: '4G', y: 13.6},
+                            ])
+                            .project('x', 'x', xScale)
+                            .project('y', 'y', yScale)
+                            .project('fill', function(d){return 'actual'}, color)
+                            .animate(true);
+
+                    var coverage = new Plottable.Plot.Line(xScale, cScale, true)
+                            .addDataset([
+                                {x: '3G', y: 80},
+                                {x: '4G', y: 63},
+                            ])
+                            .project('x', 'x', xScale)
+                            .project('y', 'y', cScale)
+                            .project('stroke', function(d){return 'coverage'}, color)
+                            .animate(true);
+
+                    var legend = new Plottable.Component.Legend(color);
+
+                    var lines = new Plottable.Component.Gridlines(null, yScale);
+
+                    var label = new Plottable.Component.Label('Bandwidth by Network type in Oz');
+                    var leftLabel = new Plottable.Component.Label('Mbit/s');
+                    var rightLabel = new Plottable.Component.Label('%');
+
+                    var chart = new Plottable.Component.Table([
+                        [leftLabel, legend, rightLabel],
+                        [yAxis, lines.below(plot.below(actual.below(coverage))), cAxis],
+                        [null,  xAxis, null],
+                        [null, label, null]
+                    ]);
+
+                    charts['bandwidth'] = chart;
+                }
+
+                Reveal.addEventListener('ready', function() {
+                    buildRttChart();
+                    buildBandwidthChart();
+                });
+
+                Reveal.addEventListener('fragmentshown', function(event) {
+                    var chart = event.fragment.getAttribute('data-chart');
+                    if (chart) {
+                        charts[chart].renderTo('#' + chart + '-chart');
+                    }
+                });
+            })();
+        </script>
+    </body>
+</html>
