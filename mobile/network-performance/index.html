@@ -49,12 +49,16 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-                <section data-background-video="/videos/eagle.mov" style="text-align: left;">
-                    <h1>TCP, HTTP</h1>
-                    <h1>mobile Performance</h1>
-                    <h3>Andre Wyrwa</h3>
-                    <p>Senior Software Engineer</p>
-                    <p>THE ICONIC</p>
+                <section style="text-align: left;">
+                    <h2>TCP, HTTP <small style="vertical-align: baseline;">&</small></h2>
+                    <h2>mobile Performance</h2>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>
+                        <div><small>Andre Wyrwa</small></div>
+                        <div><small>Senior Software Engineer</small></div>
+                        <div><small>THE ICONIC</small></div>
+                    </p>
                 </section>
                 <section>
                     <section>
@@ -600,7 +604,12 @@ echo "\r\n";
 					{ src: '/bower_components/reveal-js/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
 					{ src: '/bower_components/reveal-js/plugin/zoom-js/zoom.js', async: true },
 					{ src: '/bower_components/reveal-js/plugin/notes/notes.js', async: true }
-				]
+				],
+
+                parallaxBackgroundImage: '/images/backgrounds/wallpaper-stripes-vertical-dark-blue.jpg', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
+
+                // Parallax background size
+                parallaxBackgroundSize: '3000px 2000px' // CSS syntax, e.g. "2100px 900px"
 			});
 
             mermaid.sequenceConfig = {

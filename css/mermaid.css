@@ -78,6 +78,7 @@ text.actor {
     stroke: #decc93;
     stroke: #CCCCFF;
     fill: #fff5ad;
+    padding: 0;
 }
 
 .noteText {
@@ -85,4 +86,7 @@ text.actor {
     stroke:none;
     font-family: 'trebuchet ms', verdana, arial;
     font-size:14px;
+    line-height: 1.2em;
+    padding: 0;
+    margin: 0;
 }
