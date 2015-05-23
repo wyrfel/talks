@@ -73,7 +73,8 @@ module.exports = function(grunt) {
                 'backgrounds/**/*',
                 'bower_components/**',
                 'index.html',
-                'mobile/network-performance/**/*'
+                'mobile/network-performance/**/*',
+                'devtools/**/*'
             ]
         },
 
@@ -152,7 +153,7 @@ module.exports = function(grunt) {
 	grunt.registerTask( 'test', [ 'jshint', 'qunit' ] );
 
     // publish github pages
-    grunt.registerTask( 'publish', [ 'bower-install-simple', 'imagemin', 'gh-pages' ]);
+    grunt.registerTask( 'publish', [ 'bower-install-simple', 'gh-pages' ]);
 
     // publish github pages
     grunt.registerTask( 'assets', [ 'image_resize', 'imagemin' ]);
