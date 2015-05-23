@@ -86,6 +86,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks( 'grunt-contrib-sass' );
 	grunt.loadNpmTasks( 'grunt-contrib-connect' );
 	grunt.loadNpmTasks( 'grunt-zip' );
+    grunt.loadNpmTasks( 'grunt-gh-pages' );
 
 	// Default task
 	grunt.registerTask( 'default', [ 'jshint', 'cssmin', 'uglify', 'qunit' ] );
@@ -103,6 +104,6 @@ module.exports = function(grunt) {
 	grunt.registerTask( 'test', [ 'jshint', 'qunit' ] );
 
     // publish github pages
-    grunt.registerTask( 'gh-pages', ['gh-pages']);
+    grunt.registerTask( 'publish', ['gh-pages']);
 
 };
