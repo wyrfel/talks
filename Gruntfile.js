@@ -62,7 +62,7 @@ module.exports = function(grunt) {
 
         'gh-pages': {
             options: {
-                push: false
+                push: true
             },
             src: [
                 'js/**/*.js',
@@ -71,8 +71,15 @@ module.exports = function(grunt) {
                 'talks/**/*.html',
                 'talks/**/css/*.css',
                 'talks/**/js/*.js',
-                'bower_components/**'
+                'bower_components/**',
+                'index.html'
             ]
+        },
+
+        'bower-install-simple': {
+            options: {
+                production: true
+            }
         }
 
 	});
@@ -83,10 +90,11 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks( 'grunt-contrib-cssmin' );
 	grunt.loadNpmTasks( 'grunt-contrib-uglify' );
 	grunt.loadNpmTasks( 'grunt-contrib-watch' );
-	grunt.loadNpmTasks( 'grunt-contrib-sass' );
+	grunt.loadNpmTasks( 'grunt-sass' );
 	grunt.loadNpmTasks( 'grunt-contrib-connect' );
 	grunt.loadNpmTasks( 'grunt-zip' );
     grunt.loadNpmTasks( 'grunt-gh-pages' );
+    grunt.loadNpmTasks( 'grunt-bower-install-simple' );
 
 	// Default task
 	grunt.registerTask( 'default', [ 'jshint', 'cssmin', 'uglify', 'qunit' ] );
@@ -104,6 +112,6 @@ module.exports = function(grunt) {
 	grunt.registerTask( 'test', [ 'jshint', 'qunit' ] );
 
     // publish github pages
-    grunt.registerTask( 'publish', ['gh-pages']);
+    grunt.registerTask( 'publish', [ 'bower-install-simple', 'gh-pages' ]);
 
 };

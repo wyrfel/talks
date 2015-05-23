@@ -14,24 +14,24 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-    <link rel="stylesheet" href="/css/reveal/reveal.css">
-    <link rel="stylesheet" href="/css/reveal/theme/black.css" id="theme">
-    <link rel="stylesheet" href="/css/extras.css">
+    <link rel="stylesheet" href="bower_components/reveal-js/css/reveal.css">
+    <link rel="stylesheet" href="bower_components/reveal-js/css/theme/black.css" id="theme">
+    <link rel="stylesheet" href="css/extras.css">
 
     <!-- Code syntax highlighting -->
-    <link rel="stylesheet" href="/bower_components/reveal-js/lib/css/zenburn.css">
+    <link rel="stylesheet" href="bower_components/reveal-js/lib/css/zenburn.css">
 
     <!-- Printing and PDF exports -->
     <script>
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = window.location.search.match( /print-pdf/gi ) ? '/css/reveal/print/pdf.css' : '/css/reveal/print/paper.css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? 'bower_components/reveal-js/css/print/pdf.css' : 'bower_components/reveal-js/css/print/paper.css';
         document.getElementsByTagName( 'head' )[0].appendChild( link );
     </script>
 
     <!--[if lt IE 9]>
-    <script src="/bower_components/reveal-js/lib/js/html5shiv.js"></script>
+    <script src="bower_components/reveal-js/lib/js/html5shiv.js"></script>
     <![endif]-->
 </head>
 
@@ -57,8 +57,8 @@
     </div>
 </div>
 
-<script src="/bower_components/reveal-js/lib/js/head.min.js"></script>
-<script src="/js/reveal/reveal.js"></script>
+<script src="bower_components/reveal-js/lib/js/head.min.js"></script>
+<script src="bower_components/reveal-js/js/reveal.js"></script>
 
 <script>
 
@@ -75,12 +75,12 @@
 
         // Optional reveal.js plugins
         dependencies: [
-            { src: '/bower_components/reveal-js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-            { src: '/bower_components/reveal-js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-            { src: '/bower_components/reveal-js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-            { src: '/bower_components/reveal-js/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-            { src: '/bower_components/reveal-js/plugin/zoom-js/zoom.js', async: true },
-            { src: '/bower_components/reveal-js/plugin/notes/notes.js', async: true }
+            { src: 'bower_components/reveal-js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+            { src: 'bower_components/reveal-js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'bower_components/reveal-js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'bower_components/reveal-js/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+            { src: 'bower_components/reveal-js/plugin/zoom-js/zoom.js', async: true },
+            { src: 'bower_components/reveal-js/plugin/notes/notes.js', async: true }
         ],
 
     });
