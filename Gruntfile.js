@@ -1,3 +1,5 @@
+var mozjpeg = require('imagemin-mozjpeg');
+
 /* global module:false */
 module.exports = function(grunt) {
 	var port = grunt.option('port') || 8000;
@@ -67,7 +69,8 @@ module.exports = function(grunt) {
             src: [
                 'js/**/*.js',
                 'css/**/*.css',
-                'images/*',
+                'images/**/*',
+                'backgrounds/**/*',
                 'bower_components/**',
                 'index.html',
                 'mobile/network-performance/**/*'
@@ -77,6 +80,43 @@ module.exports = function(grunt) {
         'bower-install-simple': {
             options: {
                 production: true
+            }
+        },
+
+        imagemin: {
+            original: {
+                files: [{
+                    expand: true,
+                    cwd: 'assets/images/src/',
+                    src: ['**/*.png', '**/*.gif'],
+                    dest: 'images/'
+                }]
+            },
+            normalized: {
+                options: {
+                    use: [mozjpeg()]
+                },
+                files: [{
+                    expand: true,
+                    cwd: 'assets/images/normalized/',
+                    src: ['**/*.jpg', '**/*.jpeg'],
+                    dest: 'images/'
+                }]
+            }
+        },
+
+        'image_resize': {
+            options: {
+                width: 1280,
+                height: 768
+            },
+            all: {
+                files: [{
+                    expand: true,
+                    cwd: 'assets/images/src/',
+                    src: ['**/*.{jpg,jpeg}'],
+                    dest: 'assets/images/normalized/'
+                }]
             }
         }
 
@@ -93,6 +133,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks( 'grunt-zip' );
     grunt.loadNpmTasks( 'grunt-gh-pages' );
     grunt.loadNpmTasks( 'grunt-bower-install-simple' );
+    grunt.loadNpmTasks( 'grunt-contrib-imagemin' );
+    grunt.loadNpmTasks( 'grunt-image-resize' );
 
 	// Default task
 	grunt.registerTask( 'default', [ 'jshint', 'cssmin', 'uglify', 'qunit' ] );
@@ -110,6 +152,8 @@ module.exports = function(grunt) {
 	grunt.registerTask( 'test', [ 'jshint', 'qunit' ] );
 
     // publish github pages
-    grunt.registerTask( 'publish', [ 'bower-install-simple', 'gh-pages' ]);
+    grunt.registerTask( 'publish', [ 'bower-install-simple', 'imagemin', 'gh-pages' ]);
 
+    // publish github pages
+    grunt.registerTask( 'assets', [ 'image_resize', 'imagemin' ]);
 };

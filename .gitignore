@@ -4,5 +4,5 @@ node_modules
 css/reveal/*.css
 js/reveal/*.js
 videos
-images/backgrounds
+assets
 .grunt
