@@ -68,11 +68,9 @@ module.exports = function(grunt) {
                 'js/**/*.js',
                 'css/**/*.css',
                 'images/*',
-                'talks/**/*.html',
-                'talks/**/css/*.css',
-                'talks/**/js/*.js',
                 'bower_components/**',
-                'index.html'
+                'index.html',
+                'mobile/network-performance/**/*'
             ]
         },
 
