@@ -58,7 +58,22 @@ module.exports = function(grunt) {
 				files: ['css/reveal/theme/source/*.scss', 'css/reveal/theme/template/*.scss'],
 				tasks: 'themes'
 			}
-		}
+		},
+
+        'gh-pages': {
+            options: {
+                push: false
+            },
+            src: [
+                'js/**/*.js',
+                'css/**/*.css',
+                'images/*',
+                'talks/**/*.html',
+                'talks/**/css/*.css',
+                'talks/**/js/*.js',
+                'bower_components/**'
+            ]
+        }
 
 	});
 
@@ -86,5 +101,8 @@ module.exports = function(grunt) {
 
 	// Run tests
 	grunt.registerTask( 'test', [ 'jshint', 'qunit' ] );
+
+    // publish github pages
+    grunt.registerTask( 'gh-pages', ['gh-pages']);
 
 };
