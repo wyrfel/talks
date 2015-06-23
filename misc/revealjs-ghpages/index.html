@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js - The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="../../bower_components/reveal-js/css/reveal.css">
+		<link rel="stylesheet" href="../../bower_components/reveal-js/css/theme/black.css" id="theme">
+        <link rel="stylesheet" href="../../css/extras.css">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="../../bower_components/reveal-js/lib/css/zenburn.css">
+        <link rel="stylesheet" href="../../css/plottable.css">
+        <link rel="stylesheet" href="../../css/mermaid.css">
+        <link rel="stylesheet" href="../../css/spinner/stripes.css">
+        <link rel="stylesheet" href="../../css/ttr.css">
+        <link rel="stylesheet" href="../../css/bandwidth.css">
+        <link rel="stylesheet" href="../../css/congestion.css">
+        <link rel="stylesheet" href="../../css/slowstart.css">
+        <link rel="stylesheet" href="../../css/tcp.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../../bower_components/reveal-js/css/print/pdf.css' : '../../bower_components/reveal-js/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="../../bower_components/reveal-js/lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+                <section style="text-align: left;">
+                    <h2>reveal.js <small style="vertical-align: baseline;">&</small></h2>
+                    <h2>Github Pages</h2>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>
+                        <div><small>Andre Wyrwa</small></div>
+                        <div><small>Senior Software Engineer</small></div>
+                        <div><small>THE ICONIC</small></div>
+                    </p>
+                </section>
+                <section>
+                    <section>
+                        <h2>reveal.js</h2>
+                        <ul>
+                            <li>great presentation tool</li>
+                            <li>easy setup</li>
+                            <li>basic HTML skills</li>
+                            <li>scales with your skills</li>
+                            <li>do anything you can do in JS</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>reveal.js - do anything</h2>
+                        <iframe data-src="/misc/revealjs-ghpages" width="700" height="400">
+                        </iframe>
+                    </section>
+                    <section data-background-iframe="http://machines.chromeexperiments.com/">
+                        <h2>reveal.js - do anything</h2>
+                    </section>
+                    <section data-background-iframe="motiontext.html">
+                    </section>
+                    <section data-background-iframe="../../backgrounds/nebula.html">
+                        <h2>reveal.js - do anything</h2>
+                    </section>
+                    <section>
+                        <h2>Github Pages</h2>
+                        <ul>
+                            <li>create a hosted application of your code</li>
+                            <li>directly from your repo</li>
+                            <li>lots of usage = lots of shared knowledge</li>
+                        </ul>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>reveal.js setup</h2>
+                        <ul>
+                            <li class="fragment strike">fork hakimel/reveal.js</li>
+                            <li class="fragment">setup your own talks repository</li>
+                            <li class="fragment">install via bower</li>
+                        </ul>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Bower setup</h2>
+                    </section>
+                    <section>
+                        <h2>create asset directories</h2>
+                        <ul>
+                            <li>css</li>
+                            <li>js</li>
+                            <li>images</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>create bower.json</h2>
+                        <pre>
+                            <code data-trim class="bash">
+bower init
+                            </code>
+                        </pre>
+                        <pre>
+                            <code data-trim class="php">
+// bower.json
+{
+    ...
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components"
+    ],
+    "dependencies": {
+        "reveal-js": "hakimel/reveal.js#3.1.0",
+    }
+}
+                            </code>
+                        </pre>
+                        <pre>
+                            <code data-trim class="bash">
+bower install
+                            </code>
+                        </pre>
+                    </section>
+                    <section>
+                        <h2>create Gruntfile.js</h2>
+                        <ul>
+                            <li>copy from bower_components/reveal-js/Gruntfile.js</li>
+                            <li>
+                                delegate all tasks back to reveal.js, e.g.
+                                <pre>
+                                    <code data-trim class="js">
+uglify: {
+    gruntfile: 'bower_components/reveal-js/Gruntfile.js',
+    tasks: ['uglify']
+},
+                                    </code>
+                                </pre>
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Bower through Grunt</h2>
+                        <pre>
+                            <code data-trim class="bash">
+npm install grunt-bower-install-simple --save-dev
+                            </code>
+                        </pre>
+                        <pre>
+                            <code data-trim class="js">
+'bower-install-simple': {
+    options: {
+        production: true
+    }
+}
+...
+grunt.loadNpmTasks('grunt-bower-install-simple');
+...
+grunt.registerTask('publish', ['bower-install-simple']);
+                            </code>
+                        </pre>
+                    </section>
+                </section>
+                <section>
+                    <h2>NPM toolchain</h2>
+                    <ul>
+                        <li>setup basic package.json</li>
+                        <li>copy deps from bower_components/reveal-js/package.json</li>
+                    </ul>
+                    <p>npm install</p>
+                </section>
+                <section>
+                    <section>
+                        <h2>Github Pages setup</h2>
+                        <ul>
+                            <li>gh-pages branch</li>
+                            <li>static pages</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>grunt integration</h2>
+                        <pre>
+                            <code data-trim class="bash">
+npm install grunt-gh-pages --save-dev
+                            </code>
+                        </pre>
+                        <pre>
+                            <code data-trim class="js">
+'gh-pages': {
+    options: {
+        push: true
+    },
+    src: [
+        'js/**/*.js',
+        'css/**/*.css',
+        'images/**/*',
+        'bower_components/**',
+        'index.html',
+        '.../**/*'
+    ]
+}
+grunt.loadNpmTasks('grunt-gh-pages');
+grunt.registerTask('publish', ['bower-install-simple', 'gh-pages']);
+                            </code>
+                        </pre>
+                    </section>
+                    <section>
+                        <pre>
+                            <code data-trim class="bash">
+grunt publish
+                            </code>
+                        </pre>
+                    </section>
+                </section>
+			</div>
+		</div>
+
+		<script src="../../bower_components/reveal-js/lib/js/head.min.js"></script>
+		<script src="../../bower_components/reveal-js/js/reveal.js"></script>
+        <script src="../../bower_components/d3/d3.min.js"></script>
+        <script src="../../bower_components/plottable/plottable.min.js"></script>
+        <script src="../../bower_components/mermaid/dist/mermaid.full.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: false,
+				progress: true,
+				history: true,
+				center: true,
+                notes: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: '../../bower_components/reveal-js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../../bower_components/reveal-js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../../bower_components/reveal-js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../../bower_components/reveal-js/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../../bower_components/reveal-js/plugin/zoom-js/zoom.js', async: true },
+					{ src: '../../bower_components/reveal-js/plugin/notes/notes.js', async: true }
+				],
+
+                parallaxBackgroundImage: '../../images/backgrounds/wallpaper-stripes-horizontal.jpg', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
+
+                // Parallax background size
+                parallaxBackgroundSize: '3000px 2000px' // CSS syntax, e.g. "2100px 900px"
+			});
+
+            mermaid.sequenceConfig = {
+                diagramMarginX:50,
+                diagramMarginY:10,
+                boxTextMargin:5,
+                noteMargin:10,
+                messageMargin:35,
+                mirrorActors:true
+            };
+
+		</script>
+        <script>
+            (function () {
+                var running = false;
+
+                Reveal.addEventListener('fragmentshown', function(event) {
+                    var fragment = event.fragment,
+                            f, t, timer;
+                    if (fragment.hasAttribute('data-start-timer')) {
+                        timer = document.getElementById(fragment.getAttribute('data-start-timer'));
+                        t = 0;
+                        f = function() {
+                            t += 37;
+                            ft = Math.floor(t / 1000);
+                            dt = (('' + ( + (t/1000) - ft)).replace(/^0\./, '') + '000').substr(0,3);
+                            timer.textContent = ('000' + ft).substr(('' + ft).length + 1) + '.' + dt;
+                            if (running) {
+                                setTimeout(f, 37);
+                            }
+                        };
+
+                        timer.style.display = 'block';
+                        running = true;
+                        setTimeout(f, 100);
+                    } else if (fragment.hasAttribute('data-stop-timer')) {
+                        running = false;
+                    };
+                });
+            }());
+        </script>
+
+        <script>
+            (function() {
+                var charts = [];
+
+                function buildRttChart() {
+                    var xScale = new Plottable.Scale.Category();
+                    var yScale = new Plottable.Scale.Linear();
+
+                    var xAxis = new Plottable.Axis.Category(xScale, "bottom");
+                    var yAxis = new Plottable.Axis.Numeric(yScale, "left");
+
+                    var min = new Plottable.Plot.Bar(xScale, yScale, true)
+                            .addDataset([
+                                {x: '2G', y: 300},
+                                {x: '3G', y: 200},
+                                {x: '4G', y: 50},
+                                {x: 'Wire', y: 10}
+                            ])
+                            .project('x', 'x', xScale)
+                            .project('y', 'y', yScale)
+                            .project('fill', function(d){return '#5279c7'})
+                            .animate(true);
+
+                    var max = new Plottable.Plot.Bar(xScale, yScale, true)
+                            .addDataset([
+                                {x: '2G', y: 1000},
+                                {x: '3G', y: 300},
+                                {x: '4G', y: 100},
+                                {x: 'Wire', y: 20}
+                            ])
+                            .project('x', 'x', xScale)
+                            .project('y', 'y', yScale)
+                            .project('fill', function(d){return '#638ad8'})
+                            .animate(true);
+
+                    var lines = new Plottable.Component.Gridlines(null, yScale);
+
+                    var label = new Plottable.Component.Label('RTT by Network type');
+
+                    var chart = new Plottable.Component.Table([
+                        [yAxis, lines.below(max.below(min))],
+                        [null,  xAxis],
+                        [null, label]
+                    ]);
+
+                    charts['rtt'] = chart;
+                }
+
+                function buildBandwidthChart() {
+                    var xScale = new Plottable.Scale.Category();
+                    var yScale = new Plottable.Scale.Linear();
+                    var color = new Plottable.Scale.Color();
+                    var cScale = new Plottable.Scale.Linear();
+
+                    var xAxis = new Plottable.Axis.Category(xScale, 'bottom');
+                    var yAxis = new Plottable.Axis.Numeric(yScale, 'left');
+                    var cAxis = new Plottable.Axis.Numeric(cScale, "right");
+
+                    var plot = new Plottable.Plot.Bar(xScale, yScale, true)
+                            .addDataset([
+                                {x: '2G', y: 0.05},
+                                {x: 'EDGE', y: 0.3},
+                                {x: '3G', y: 12},
+                                {x: '4G', y: 20},
+                            ])
+                            .project('x', 'x', xScale)
+                            .project('y', 'y', yScale)
+                            .project('fill', function(d){return 'theoretical'}, color)
+                            .animate(true);
+
+                    var actual = new Plottable.Plot.Bar(xScale, yScale, true)
+                            .addDataset([
+                                {x: '3G', y: 5},
+                                {x: '4G', y: 13.6},
+                            ])
+                            .project('x', 'x', xScale)
+                            .project('y', 'y', yScale)
+                            .project('fill', function(d){return 'actual'}, color)
+                            .animate(true);
+
+                    var coverage = new Plottable.Plot.Line(xScale, cScale, true)
+                            .addDataset([
+                                {x: '3G', y: 80},
+                                {x: '4G', y: 63},
+                            ])
+                            .project('x', 'x', xScale)
+                            .project('y', 'y', cScale)
+                            .project('stroke', function(d){return 'coverage'}, color)
+                            .animate(true);
+
+                    var legend = new Plottable.Component.Legend(color);
+
+                    var lines = new Plottable.Component.Gridlines(null, yScale);
+
+                    var label = new Plottable.Component.Label('Bandwidth by Network type in Oz');
+                    var leftLabel = new Plottable.Component.Label('Mbit/s');
+                    var rightLabel = new Plottable.Component.Label('%');
+
+                    var chart = new Plottable.Component.Table([
+                        [leftLabel, legend, rightLabel],
+                        [yAxis, lines.below(plot.below(actual.below(coverage))), cAxis],
+                        [null,  xAxis, null],
+                        [null, label, null]
+                    ]);
+
+                    charts['bandwidth'] = chart;
+                }
+
+                Reveal.addEventListener('ready', function() {
+                    buildRttChart();
+                    buildBandwidthChart();
+                });
+
+                Reveal.addEventListener('fragmentshown', function(event) {
+                    var chart = event.fragment.getAttribute('data-chart');
+                    if (chart) {
+                        charts[chart].renderTo('#' + chart + '-chart');
+                    }
+                });
+            })();
+        </script>
+    </body>
+</html>
