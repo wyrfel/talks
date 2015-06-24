@@ -64,32 +64,43 @@
                     <section>
                         <h2>reveal.js</h2>
                         <ul>
-                            <li>great presentation tool</li>
-                            <li>easy setup</li>
-                            <li>basic HTML skills</li>
-                            <li>scales with your skills</li>
-                            <li>do anything you can do in JS</li>
+                            <li class="fragment">great presentation tool</li>
+                            <li class="fragment">easy setup</li>
+                            <li class="fragment">basic HTML skills</li>
+                            <li class="fragment">scales with your skills</li>
+                            <li class="fragment">do anything you can do in JS</li>
+                            <li class="fragment"><a href="http://slides.com/">slides.com</a> visual editor</li>
                         </ul>
                     </section>
-                    <section>
-                        <h2>reveal.js - do anything</h2>
-                        <iframe data-src="/misc/revealjs-ghpages" width="700" height="400">
-                        </iframe>
+                    <section data-background-iframe="../../backgrounds/nebula.html">
+                        <h2>do canvas</h2>
                     </section>
                     <section data-background-iframe="http://machines.chromeexperiments.com/">
-                        <h2>reveal.js - do anything</h2>
+                        <h2>do webgl</h2>
                     </section>
                     <section data-background-iframe="motiontext.html">
                     </section>
-                    <section data-background-iframe="../../backgrounds/nebula.html">
-                        <h2>reveal.js - do anything</h2>
+                    <section>
+                        <h2>do recursion</h2>
+                        <iframe data-src="/misc/revealjs-ghpages" width="700" height="400">
+                        </iframe>
+                    </section>
+                    <section>
+                        <h2>Host on Github!</h2>
+                        <p>
+                            <div class="fragment strike"><a href="http://slidedeck.io/">slidedeck.io</a> will pick it up</div>
+                            <small class="fragment">only works with forked repos</small>
+                        </p>
+                        <p class="fragment">
+                            use <a href="http://pages.github.com/">github pages</a>
+                        </p>
                     </section>
                     <section>
                         <h2>Github Pages</h2>
                         <ul>
                             <li>create a hosted application of your code</li>
                             <li>directly from your repo</li>
-                            <li>lots of usage = lots of shared knowledge</li>
+                            <li>lots of support</li>
                         </ul>
                     </section>
                 </section>
@@ -100,12 +111,9 @@
                             <li class="fragment strike">fork hakimel/reveal.js</li>
                             <li class="fragment">setup your own talks repository</li>
                             <li class="fragment">install via bower</li>
+                            <li class="fragment">add components easily</li>
+                            <li class="fragment">re-use them in several talks</li>
                         </ul>
-                    </section>
-                </section>
-                <section>
-                    <section>
-                        <h2>Bower setup</h2>
                     </section>
                     <section>
                         <h2>create asset directories</h2>
@@ -163,21 +171,19 @@ uglify: {
                     </section>
                     <section>
                         <h2>Bower through Grunt</h2>
-                        <pre>
-                            <code data-trim class="bash">
+                        <code data-trim class="bash">
 npm install grunt-bower-install-simple --save-dev
-                            </code>
-                        </pre>
+                        </code>
                         <pre>
                             <code data-trim class="js">
-'bower-install-simple': {
-    options: {
-        production: true
+grunt.initConfig({
+    'bower-install-simple': {
+        options: {
+            production: true
+        }
     }
 }
-...
 grunt.loadNpmTasks('grunt-bower-install-simple');
-...
 grunt.registerTask('publish', ['bower-install-simple']);
                             </code>
                         </pre>
@@ -185,41 +191,52 @@ grunt.registerTask('publish', ['bower-install-simple']);
                 </section>
                 <section>
                     <h2>NPM toolchain</h2>
+                    <code data-trim class="bash">npm init</code>
                     <ul>
                         <li>setup basic package.json</li>
                         <li>copy deps from bower_components/reveal-js/package.json</li>
                     </ul>
-                    <p>npm install</p>
+                    <code data-trim class="bash">npm install</code>
                 </section>
                 <section>
                     <section>
                         <h2>Github Pages setup</h2>
-                        <ul>
-                            <li>gh-pages branch</li>
-                            <li>static pages</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h2>grunt integration</h2>
                         <pre>
                             <code data-trim class="bash">
-npm install grunt-gh-pages --save-dev
+git checkout --orphan gh-pages
+git rm -rf .
                             </code>
                         </pre>
                         <pre>
-                            <code data-trim class="js">
-'gh-pages': {
-    options: {
-        push: true
-    },
-    src: [
-        'js/**/*.js',
-        'css/**/*.css',
-        'images/**/*',
-        'bower_components/**',
-        'index.html',
-        '.../**/*'
-    ]
+                            <code data-trim class="bash">
+git checkout master -- path/to/file
+mv path/to/file path/to/final/location
+                            </code>
+                        </pre>
+                        <p class="fragment">too much fiddling!</p>
+                        <p class="fragment">use grunt!</p>
+                    </section>
+                    <section>
+                        <h2>grunt integration</h2>
+                        <code data-trim class="bash">
+npm install grunt-gh-pages --save-dev
+                        </code>
+                        <pre>
+                            <code data-trim class="js" style="font-size: 0.875em; line-height:1.2em;">
+grunt.initConfig({
+    'gh-pages': {
+        options: {
+            push: true
+        },
+        src: [
+            'js/**/*.js',
+            'css/**/*.css',
+            'images/**/*',
+            'bower_components/**',
+            'index.html',
+            '.../**/*'
+        ]
+    }
 }
 grunt.loadNpmTasks('grunt-gh-pages');
 grunt.registerTask('publish', ['bower-install-simple', 'gh-pages']);
@@ -227,11 +244,37 @@ grunt.registerTask('publish', ['bower-install-simple', 'gh-pages']);
                         </pre>
                     </section>
                     <section>
-                        <pre>
-                            <code data-trim class="bash">
+                        <code data-trim class="bash">
 grunt publish
-                            </code>
-                        </pre>
+                        </code>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>do more in your slides</h2>
+                    </section>
+                    <section>
+                        <code data-trim class="bash">bower install <a href="http://plottablejs.org/">plottable</a></code>
+                        <div class="fragment center" data-chart="rtt">
+                            <svg id="rtt-chart" width="600" height="400" style="margin: auto;"></svg>
+                        </div>
+                    </section>
+                    <section>
+                        <code data-trim class="bash">bower install <a href="http://knsv.github.io/mermaid/">mermaid</a></code>
+                        <div class="mermaid">
+                            sequenceDiagram
+                            participant A
+                            participant B
+                            participant C
+                            A->>B: request
+                            B->>C: request
+                            C-->>B: response
+                            B-->>A: response
+                        </div>
+                    </section>
+                    <section>
+                        <code data-trim class="bash">bower install <a href="http://datamaps.github.io">datamaps</a></code>
+                        <div id="datamap" style="height: 600px;"></div>
                     </section>
                 </section>
 			</div>
@@ -242,6 +285,8 @@ grunt publish
         <script src="../../bower_components/d3/d3.min.js"></script>
         <script src="../../bower_components/plottable/plottable.min.js"></script>
         <script src="../../bower_components/mermaid/dist/mermaid.full.min.js"></script>
+        <script src="../../bower_components/topojson/topojson.js"></script>
+        <script src="../../bower_components/datamaps/dist/datamaps.world.min.js"></script>
 
 		<script>
 
@@ -325,10 +370,10 @@ grunt publish
 
                     var min = new Plottable.Plot.Bar(xScale, yScale, true)
                             .addDataset([
-                                {x: '2G', y: 300},
-                                {x: '3G', y: 200},
-                                {x: '4G', y: 50},
-                                {x: 'Wire', y: 10}
+                                {x: 'A', y: 300},
+                                {x: 'B', y: 200},
+                                {x: 'C', y: 50},
+                                {x: 'D', y: 10}
                             ])
                             .project('x', 'x', xScale)
                             .project('y', 'y', yScale)
@@ -337,10 +382,10 @@ grunt publish
 
                     var max = new Plottable.Plot.Bar(xScale, yScale, true)
                             .addDataset([
-                                {x: '2G', y: 1000},
-                                {x: '3G', y: 300},
-                                {x: '4G', y: 100},
-                                {x: 'Wire', y: 20}
+                                {x: 'A', y: 1000},
+                                {x: 'B', y: 300},
+                                {x: 'C', y: 100},
+                                {x: 'D', y: 20}
                             ])
                             .project('x', 'x', xScale)
                             .project('y', 'y', yScale)
@@ -349,7 +394,7 @@ grunt publish
 
                     var lines = new Plottable.Component.Gridlines(null, yScale);
 
-                    var label = new Plottable.Component.Label('RTT by Network type');
+                    var label = new Plottable.Component.Label('');
 
                     var chart = new Plottable.Component.Table([
                         [yAxis, lines.below(max.below(min))],
@@ -430,6 +475,19 @@ grunt publish
                     if (chart) {
                         charts[chart].renderTo('#' + chart + '-chart');
                     }
+                });
+
+                Reveal.addEventListener('ready', function(event) {
+                    var map = new Datamap({
+                        element: document.getElementById('datamap'),
+                        fills: {
+                            defaultFill: "#ABDDA4",
+                            authorHasTraveledTo: "#fa0fa0"
+                        },
+                        data: {
+                            AUS: { fillKey: "authorHasTraveledTo" }
+                        }
+                    });
                 });
             })();
         </script>
