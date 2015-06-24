@@ -74,7 +74,8 @@ module.exports = function(grunt) {
                 'bower_components/**',
                 'index.html',
                 'mobile/network-performance/**/*',
-                'devtools/**/*'
+                'devtools/**/*',
+                'misc/revealjs-ghpages/**/*'
             ]
         },
 
