@@ -116,6 +116,16 @@
                 z-index: -1;
                 opacity: 0.1;
             }
+
+            .reveal .npm-logo {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-top: 50px;
+                margin-left: -200px;
+                z-index: -1;
+                opacity: 0.1;
+            }
         </style>
 	</head>
 
@@ -334,6 +344,9 @@ grunt.registerTask('publish', ['bower-install-simple']);
                     </ul>
                     <div class="fragment">
                         <code data-trim class="bash">npm install</code>
+                    </div>
+                    <div class="npm-logo">
+                        <img class="noframe" src="../../images/npm-logo-white.png" width="350"/>
                     </div>
                 </section>
                 <section data-background-image="../../images/backgrounds/brown-wood-pattern.jpg">
