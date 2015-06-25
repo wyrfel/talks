@@ -41,6 +41,54 @@
 		<!--[if lt IE 9]>
 		<script src="../../bower_components/reveal-js/lib/js/html5shiv.js"></script>
 		<![endif]-->
+
+        <style>
+            @-webkit-keyframes rotate {
+                0% {
+                    transform: rotate(0deg);
+                }
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+
+            .rotate {
+                animation: rotate 5s linear infinite;
+            }
+
+            .reveal h1 {
+                font-size: 230px;
+                white-space: nowrap;
+                transform: rotate(-10deg) translateX(-20%);
+                opacity: 0.15;
+                text-shadow: 0 0 10px #fff, 0 0 50px #fff, 0 0 5px #fff;
+                font-weight: bold;
+                margin-bottom: -100px;
+                margin-top: -80px;
+            }
+
+            .reveal pre code {
+                background: rgba(0,0,0,0.4);
+            }
+
+            .reveal ul li {
+                list-style-type: none;
+            }
+
+            .reveal a,
+            .reveal a:link {
+                color: #669900;
+            }
+
+            .reveal a:hover {
+                color: #88bb00;
+            }
+
+            .reveal .comment {
+                opacity: 0.4;
+                vertical-align: baseline;
+            }
+        </style>
 	</head>
 
 	<body>
@@ -49,7 +97,7 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-                <section style="text-align: left;">
+                <section style="text-align: left;" data-background-image="../../images/backgrounds/brown-wood-pattern.jpg">
                     <h2>reveal.js <small style="vertical-align: baseline;">&</small></h2>
                     <h2>Github Pages</h2>
                     <p>&nbsp;</p>
@@ -60,9 +108,9 @@
                         <div><small>THE ICONIC</small></div>
                     </p>
                 </section>
-                <section>
+                <section data-background-image="../../images/backgrounds/brown-wood-pattern.jpg">
                     <section>
-                        <h2>reveal.js</h2>
+                        <h1>reveal.js</h1>
                         <ul>
                             <li class="fragment">great presentation tool</li>
                             <li class="fragment">easy setup</li>
@@ -73,109 +121,145 @@
                         </ul>
                     </section>
                     <section data-background-iframe="../../backgrounds/nebula.html">
-                        <h2>do canvas</h2>
-                    </section>
-                    <section data-background-iframe="http://machines.chromeexperiments.com/">
-                        <h2>do webgl</h2>
+                        <p>use &lt;canvas&gt; & CSS animations</p>
+                        <img src="../../images/space-cow.png" class="noframe rotate" />
                     </section>
                     <section data-background-iframe="motiontext.html">
                     </section>
                     <section>
-                        <h2>do recursion</h2>
+                        <h1>Embedding</h1>
                         <iframe data-src="../revealjs-ghpages" width="700" height="400">
                         </iframe>
                     </section>
                     <section>
+                        <h1>Charts</h1>
+                        <div class="fragment center" data-chart="rtt">
+                            <svg id="rtt-chart" width="600" height="400" style="margin: auto;"></svg>
+                        </div>
+                    </section>
+                    <section>
+                        <h1>Hosting</h1>
                         <h2>Host on Github!</h2>
-                        <p>
-                            <div class="fragment strike"><a href="http://slidedeck.io/">slidedeck.io</a> will pick it up</div>
-                            <small class="fragment">only works with forked repos</small>
-                        </p>
+                        <ul>
+                            <li class="fragment">share your presentation code</li>
+                            <li class="fragment">share your reveal.js setup</li>
+                        </ul>
                         <p class="fragment">
                             use <a href="http://pages.github.com/">github pages</a>
                         </p>
                     </section>
+                </section>
+                <section data-background-image="../../images/backgrounds/brown-wood-pattern.jpg">
                     <section>
-                        <h2>Github Pages</h2>
+                        <h1>Setup</h1>
+                        <h2>forking</h2>
                         <ul>
-                            <li>create a hosted application of your code</li>
-                            <li>directly from your repo</li>
-                            <li>lots of support</li>
+                            <li class="fragment" data-fragment-index="1">
+                                <div>fork hakimel/reveal.js</div>
+                                <div style="font-size: 0.6em; line-height: 1.2em;">for each talk</div>
+                            </li>
+                            <li class="fragment" data-fragment-index="2">
+                                <a href="http://slidedeck.io/">slidedeck.io</a> will pick it up
+                            </li>
+                            <li class="fragment" data-fragment-index="3"><em>hard to update reveal.js core</em></li>
+                            <li class="fragment" data-fragment-index="4"><em>no easy code-reuse</em></li>
                         </ul>
                     </section>
-                </section>
-                <section>
                     <section>
-                        <h2>reveal.js setup</h2>
+                        <h1>Setup</h1>
+                        <h2>use bower</h2>
                         <ul>
-                            <li class="fragment strike">fork hakimel/reveal.js</li>
                             <li class="fragment">setup your own talks repository</li>
                             <li class="fragment">install via bower</li>
-                            <li class="fragment">add components easily</li>
-                            <li class="fragment">re-use them in several talks</li>
+                            <li class="fragment"><em>update core easily</em></li>
+                            <li class="fragment"><em>add components easily</em></li>
+                            <li class="fragment"><em>re-use code in several talks</em></li>
                         </ul>
                     </section>
                     <section>
-                        <h2>create asset directories</h2>
+                        <h1>Layout</h1>
                         <ul>
-                            <li>css</li>
-                            <li>js</li>
-                            <li>images</li>
+                            <li>backgrounds <small class="comment">background iframe contents</small></li>
+                            <li>css/js/videos <small class="comment">global assets</small></li>
+                            <li>
+                                images <small class="comment">images</small>
+                                <ul>
+                                    <li>backgrounds <small class="comment">large background images</small></li>
+                                </ul>
+                            </li>
+                            <li>
+                                my_talk <small class="comment">talk folder(s)</small>
+                                <ul>
+                                    <li>css/js/images <small class="comment">talk assets</small></li>
+                                    <li>index.html <small class="comment">talk file</small></li>
+                                </ul>
+                            </li>
+                            <li>index.html <small class="comment">talk index</small></li>
                         </ul>
                     </section>
                     <section>
-                        <h2>create bower.json</h2>
-                        <pre>
+                        <h1>.gitignore</h1>
+                        <p>do NOT commit large images or videos</p>
+                        <pre><code data-trim class="bash">
+#.gitignore
+bower_components
+node_modules
+images/backgrounds
+videos
+.grunt
+                        </code></pre>
+                        <p>alternatively, setup image optimisation in grunt</p>
+                    </section>
+                    <section>
+                        <h1>bower </h1>
+                        <div class="fragment">
                             <code data-trim class="bash">
 bower init
                             </code>
-                        </pre>
-                        <pre>
-                            <code data-trim class="php">
-// bower.json
+                        </div>
+                        <pre class="fragment"><code data-trim class="php">
+//bower.json
 {
     ...
     "ignore": [
         "**/.*",
         "node_modules",
-        "bower_components"
+        "bower_components",
+        "test",
+        "tests"
     ],
     "dependencies": {
         "reveal-js": "hakimel/reveal.js#3.1.0",
     }
 }
-                            </code>
-                        </pre>
-                        <pre>
+                        </code></pre>
+                        <div class="fragment">
                             <code data-trim class="bash">
 bower install
                             </code>
-                        </pre>
+                        </div>
                     </section>
                     <section>
-                        <h2>create Gruntfile.js</h2>
+                        <h1>Gruntfile.js</h1>
                         <ul>
-                            <li>copy from bower_components/reveal-js/Gruntfile.js</li>
-                            <li>
-                                delegate all tasks back to reveal.js, e.g.
-                                <pre>
-                                    <code data-trim class="js">
+                            <li class="fragment">copy bower_components/reveal-js/Gruntfile.js</li>
+                            <li class="fragment" data-autoslide="100">delegate all tasks back to reveal.js, e.g.</li>
+                        </ul>
+                        <pre class="fragment"><code data-trim class="js">
+//Grunfile.js
 uglify: {
     gruntfile: 'bower_components/reveal-js/Gruntfile.js',
     tasks: ['uglify']
 },
-                                    </code>
-                                </pre>
-                            </li>
-                        </ul>
+                        </code></pre>
                     </section>
                     <section>
-                        <h2>Bower through Grunt</h2>
+                        <h1>Grunt & Bower</h1>
                         <code data-trim class="bash">
 npm install grunt-bower-install-simple --save-dev
                         </code>
-                        <pre>
-                            <code data-trim class="js">
+                        <pre class="fragment"><code data-trim class="js">
+//Gruntfile.js
 grunt.initConfig({
     'bower-install-simple': {
         options: {
@@ -185,44 +269,53 @@ grunt.initConfig({
 }
 grunt.loadNpmTasks('grunt-bower-install-simple');
 grunt.registerTask('publish', ['bower-install-simple']);
-                            </code>
-                        </pre>
+                        </code></pre>
                     </section>
                 </section>
-                <section>
-                    <h2>NPM toolchain</h2>
-                    <code data-trim class="bash">npm init</code>
+                <section data-background-image="../../images/backgrounds/brown-wood-pattern.jpg">
+                    <h1>NPM</h1>
+                    <div class="fragment">
+                        <code data-trim class="bash">npm init</code>
+                    </div>
                     <ul>
-                        <li>setup basic package.json</li>
-                        <li>copy deps from bower_components/reveal-js/package.json</li>
+                        <li class="fragment">setup basic package.json</li>
+                        <li class="fragment">
+                            <div>copy deps from</div>
+                            <small>bower_components/reveal-js/package.json</small>
+                        </li>
                     </ul>
-                    <code data-trim class="bash">npm install</code>
+                    <div class="fragment">
+                        <code data-trim class="bash">npm install</code>
+                    </div>
                 </section>
-                <section>
+                <section data-background-image="../../images/backgrounds/brown-wood-pattern.jpg">
                     <section>
-                        <h2>Github Pages setup</h2>
-                        <pre>
-                            <code data-trim class="bash">
+                        <h1>Github Pages</h1>
+                        <div class="fragment">
+                            <p>initial setup</p>
+                            <pre><code data-trim class="bash">
 git checkout --orphan gh-pages
 git rm -rf .
-                            </code>
-                        </pre>
-                        <pre>
-                            <code data-trim class="bash">
+                            </code></pre>
+                        </div>
+                        <div class="fragment">
+                            <p>on updates</p>
+                                <pre><code data-trim class="bash">
 git checkout master -- path/to/file
 mv path/to/file path/to/final/location
-                            </code>
-                        </pre>
-                        <p class="fragment">too much fiddling!</p>
+                                </code></pre>
+                        </div>
+                        <p class="fragment">too hard</p>
                         <p class="fragment">use grunt!</p>
                     </section>
                     <section>
-                        <h2>grunt integration</h2>
-                        <code data-trim class="bash">
+                        <h1>Github Pages</h1>
+                        <div class="fragment">
+                            <code data-trim class="bash">
 npm install grunt-gh-pages --save-dev
-                        </code>
-                        <pre>
-                            <code data-trim class="js" style="font-size: 0.875em; line-height:1.2em;">
+                            </code>
+                        </div>
+                        <pre class="fragment"><code data-trim class="js" style="font-size: 0.875em; line-height:1.2em;">
 grunt.initConfig({
     'gh-pages': {
         options: {
@@ -240,41 +333,27 @@ grunt.initConfig({
 }
 grunt.loadNpmTasks('grunt-gh-pages');
 grunt.registerTask('publish', ['bower-install-simple', 'gh-pages']);
-                            </code>
-                        </pre>
+                        </code></pre>
                     </section>
                     <section>
+                        <h1>Done</h1>
                         <code data-trim class="bash">
 grunt publish
                         </code>
                     </section>
-                </section>
-                <section>
-                    <section>
-                        <h2>do more in your slides</h2>
-                    </section>
-                    <section>
-                        <code data-trim class="bash">bower install <a href="http://plottablejs.org/">plottable</a></code>
-                        <div class="fragment center" data-chart="rtt">
-                            <svg id="rtt-chart" width="600" height="400" style="margin: auto;"></svg>
+                    <section data-background-image="../../images/backgrounds/brown-wood-pattern.jpg">
+                        <h1>Thank you</h1>
+                        <h2>Jump-start your repo</h2>
+                        <p>fork <a href="https://github.com/wyrfel/talks">wyrfel/talks</a></p>
+                        <div>
+                            <code data-trim>npm install</code>
                         </div>
-                    </section>
-                    <section>
-                        <code data-trim class="bash">bower install <a href="http://knsv.github.io/mermaid/">mermaid</a></code>
-                        <div class="mermaid">
-                            sequenceDiagram
-                            participant A
-                            participant B
-                            participant C
-                            A->>B: request
-                            B->>C: request
-                            C-->>B: response
-                            B-->>A: response
+                        <div>
+                            <code data-trim>bower install</code>
                         </div>
-                    </section>
-                    <section>
-                        <code data-trim class="bash">bower install <a href="http://datamaps.github.io">datamaps</a></code>
-                        <div id="datamap" style="height: 600px;"></div>
+                        <div>
+                            <code data-trim>grunt assets</code>
+                        </div>
                     </section>
                 </section>
 			</div>
@@ -311,10 +390,12 @@ grunt publish
 					{ src: '../../bower_components/reveal-js/plugin/notes/notes.js', async: true }
 				],
 
-                parallaxBackgroundImage: '../../images/backgrounds/wallpaper-stripes-horizontal.jpg', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
+                viewDistance: 1
+
+                //parallaxBackgroundImage: '../../images/backgrounds/wallpaper-stripes-horizontal.jpg', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
 
                 // Parallax background size
-                parallaxBackgroundSize: '3000px 2000px' // CSS syntax, e.g. "2100px 900px"
+                //parallaxBackgroundSize: '3000px 2000px' // CSS syntax, e.g. "2100px 900px"
 			});
 
             mermaid.sequenceConfig = {
@@ -370,26 +451,26 @@ grunt publish
 
                     var min = new Plottable.Plot.Bar(xScale, yScale, true)
                             .addDataset([
-                                {x: 'A', y: 300},
-                                {x: 'B', y: 200},
-                                {x: 'C', y: 50},
-                                {x: 'D', y: 10}
+                                {x: 'A', y: 200},
+                                {x: 'B', y: 500},
+                                {x: 'C', y: 400},
+                                {x: 'D', y: 100}
                             ])
                             .project('x', 'x', xScale)
                             .project('y', 'y', yScale)
-                            .project('fill', function(d){return '#5279c7'})
+                            .project('fill', function(d){return '#336600'})
                             .animate(true);
 
                     var max = new Plottable.Plot.Bar(xScale, yScale, true)
                             .addDataset([
                                 {x: 'A', y: 1000},
-                                {x: 'B', y: 300},
-                                {x: 'C', y: 100},
-                                {x: 'D', y: 20}
+                                {x: 'B', y: 700},
+                                {x: 'C', y: 900},
+                                {x: 'D', y: 500}
                             ])
                             .project('x', 'x', xScale)
                             .project('y', 'y', yScale)
-                            .project('fill', function(d){return '#638ad8'})
+                            .project('fill', function(d){return '#669900'})
                             .animate(true);
 
                     var lines = new Plottable.Component.Gridlines(null, yScale);
@@ -405,69 +486,8 @@ grunt publish
                     charts['rtt'] = chart;
                 }
 
-                function buildBandwidthChart() {
-                    var xScale = new Plottable.Scale.Category();
-                    var yScale = new Plottable.Scale.Linear();
-                    var color = new Plottable.Scale.Color();
-                    var cScale = new Plottable.Scale.Linear();
-
-                    var xAxis = new Plottable.Axis.Category(xScale, 'bottom');
-                    var yAxis = new Plottable.Axis.Numeric(yScale, 'left');
-                    var cAxis = new Plottable.Axis.Numeric(cScale, "right");
-
-                    var plot = new Plottable.Plot.Bar(xScale, yScale, true)
-                            .addDataset([
-                                {x: '2G', y: 0.05},
-                                {x: 'EDGE', y: 0.3},
-                                {x: '3G', y: 12},
-                                {x: '4G', y: 20},
-                            ])
-                            .project('x', 'x', xScale)
-                            .project('y', 'y', yScale)
-                            .project('fill', function(d){return 'theoretical'}, color)
-                            .animate(true);
-
-                    var actual = new Plottable.Plot.Bar(xScale, yScale, true)
-                            .addDataset([
-                                {x: '3G', y: 5},
-                                {x: '4G', y: 13.6},
-                            ])
-                            .project('x', 'x', xScale)
-                            .project('y', 'y', yScale)
-                            .project('fill', function(d){return 'actual'}, color)
-                            .animate(true);
-
-                    var coverage = new Plottable.Plot.Line(xScale, cScale, true)
-                            .addDataset([
-                                {x: '3G', y: 80},
-                                {x: '4G', y: 63},
-                            ])
-                            .project('x', 'x', xScale)
-                            .project('y', 'y', cScale)
-                            .project('stroke', function(d){return 'coverage'}, color)
-                            .animate(true);
-
-                    var legend = new Plottable.Component.Legend(color);
-
-                    var lines = new Plottable.Component.Gridlines(null, yScale);
-
-                    var label = new Plottable.Component.Label('Bandwidth by Network type in Oz');
-                    var leftLabel = new Plottable.Component.Label('Mbit/s');
-                    var rightLabel = new Plottable.Component.Label('%');
-
-                    var chart = new Plottable.Component.Table([
-                        [leftLabel, legend, rightLabel],
-                        [yAxis, lines.below(plot.below(actual.below(coverage))), cAxis],
-                        [null,  xAxis, null],
-                        [null, label, null]
-                    ]);
-
-                    charts['bandwidth'] = chart;
-                }
-
                 Reveal.addEventListener('ready', function() {
                     buildRttChart();
-                    buildBandwidthChart();
                 });
 
                 Reveal.addEventListener('fragmentshown', function(event) {
