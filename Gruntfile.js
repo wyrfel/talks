@@ -96,7 +96,7 @@ module.exports = function(grunt) {
             },
             normalized: {
                 options: {
-                    use: [mozjpeg()]
+                    use: [mozjpeg({quality: 90})]
                 },
                 files: [{
                     expand: true,

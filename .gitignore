@@ -1,8 +1,6 @@
 .idea
 bower_components
 node_modules
-css/reveal/*.css
-js/reveal/*.js
 videos
 assets
 .grunt
