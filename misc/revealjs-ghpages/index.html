@@ -88,6 +88,34 @@
                 opacity: 0.4;
                 vertical-align: baseline;
             }
+
+            .reveal .github-logo {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-left: -128px;
+                z-index: -1;
+                opacity: 0.1;
+            }
+
+            .reveal .bower-logo {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-left: -175px;
+                z-index: -1;
+                opacity: 0.1;
+            }
+
+            .reveal .grunt-logo {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-top: -50px;
+                margin-left: -200px;
+                z-index: -1;
+                opacity: 0.1;
+            }
         </style>
 	</head>
 
@@ -146,6 +174,9 @@
                             <li class="fragment">share your presentation code</li>
                             <li class="fragment">share your reveal.js setup</li>
                         </ul>
+                        <div class="github-logo">
+                            <img class="noframe" src="../../images/github-logo-white.png" />
+                        </div>
                     </section>
                 </section>
                 <section data-background-image="../../images/backgrounds/brown-wood-pattern.jpg">
@@ -163,6 +194,9 @@
                             <li class="fragment" data-fragment-index="3"><em>hard to update reveal.js core</em></li>
                             <li class="fragment" data-fragment-index="4"><em>no easy code-reuse</em></li>
                         </ul>
+                        <div class="github-logo">
+                            <img class="noframe" src="../../images/github-logo-white.png" />
+                        </div>
                     </section>
                     <section>
                         <h1>Setup</h1>
@@ -177,6 +211,9 @@
                         <p class="fragment">
                             use <a href="http://pages.github.com/">github pages</a>
                         </p>
+                        <div class="github-logo">
+                            <img class="noframe" src="../../images/github-logo-white.png" />
+                        </div>
                     </section>
                     <section>
                         <h1>Layout</h1>
@@ -240,6 +277,9 @@ bower init
 bower install
                             </code>
                         </div>
+                        <div class="bower-logo">
+                            <img class="noframe" src="../../images/bower-logo-white.png" width="350"/>
+                        </div>
                     </section>
                     <section>
                         <h1>Gruntfile.js</h1>
@@ -254,6 +294,9 @@ uglify: {
     tasks: ['uglify']
 },
                         </code></pre>
+                        <div class="grunt-logo">
+                            <img class="noframe" src="../../images/grunt-logo-white.png" width="400"/>
+                        </div>
                     </section>
                     <section>
                         <h1>Grunt & Bower</h1>
@@ -272,6 +315,9 @@ grunt.initConfig({
 grunt.loadNpmTasks('grunt-bower-install-simple');
 grunt.registerTask('publish', ['bower-install-simple']);
                         </code></pre>
+                        <div class="grunt-logo">
+                            <img class="noframe" src="../../images/grunt-logo-white.png" width="400"/>
+                        </div>
                     </section>
                 </section>
                 <section data-background-image="../../images/backgrounds/brown-wood-pattern.jpg">
@@ -336,6 +382,9 @@ grunt.initConfig({
 grunt.loadNpmTasks('grunt-gh-pages');
 grunt.registerTask('publish', ['bower-install-simple', 'gh-pages']);
                         </code></pre>
+                        <div class="grunt-logo">
+                            <img class="noframe" src="../../images/grunt-logo-white.png" width="400"/>
+                        </div>
                     </section>
                     <section>
                         <h1>Done</h1>
